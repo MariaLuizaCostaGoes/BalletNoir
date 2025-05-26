@@ -1,0 +1,192 @@
+body {
+    margin: 0;
+    font-family: "Georgia", serif;
+    background-color: #fff5f9;
+    overflow-x: hidden;
+}
+
+.cabecalho {
+    background: #d4d1d1b0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    margin-right: 1%;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+}
+
+nav a:nth-child(3) {
+    color: #f06e9b;
+}
+
+.a_atual::after {
+    content: "";
+    background-color: #ee80a1;
+    display: block;
+    width: 100%;
+    height: 5px;
+}
+
+nav a::after {
+    content: "";
+    background-color: #f4a4bc;
+    display: block;
+    width: 10%;
+    height: 5px;
+    display: none;
+    animation: cabeçalho 1s ease;
+}
+
+@keyframes animaCabecalho {
+    to {
+        width: 100%;
+    }
+}
+
+nav a:hover::after {
+    display: block;
+}
+
+.balletDeRepertorio {
+    background-color: #fff0f5;
+    padding: 40px 60px;
+    color: #f18397;
+}
+
+.balletDeRepertorio h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.balletDeRepertorio p {
+    color: black;
+    font-size: 18px;
+    margin-top: 3%;
+}
+
+.oQueSao {
+    background-color: #fff0f5;
+    padding: 40px 60px;
+    color: #f18397;
+}
+
+.oQueSao h2,
+.oQueSao h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.oQueSao p {
+    color: black;
+    font-size: 18px;
+    margin-top: 3%;
+    max-width: 700px;
+}
+
+.container {
+    max-width: 550px;
+    min-width: 350px;
+}
+
+.carrossel {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1.2rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.card {
+    background: aqua;
+    min-height: 350px;
+    min-width: 450px;
+    scroll-snap-align: center;
+    border-radius: 40px;
+}
+
+.card-giselle {
+    background-image: url('../img/giselleprimeiroato.jpg');
+    background-size: cover;
+}
+
+.card-giselle {
+    background-image: url('../img/giselleprimeiroato.jpg');
+    background-size: cover;
+}
+
+.card-giselle {
+    background-image: url('../img/giselleprimeiroato.jpg');
+    background-size: cover;
+}
+
+.card-giselle {
+    background-image: url('../img/giselleprimeiroato.jpg');
+    background-size: cover;
+}
+
+.card-giselle {
+    background-image: url('../img/giselleprimeiroato.jpg');
+    background-size: cover;
+}
+
+.card-giselle {
+    background-image: url('../img/giselleprimeiroato.jpg');
+    background-size: cover;
+}
+
+.card-giselle {
+    background-image: url('../img/giselleprimeiroato.jpg');
+    background-size: cover;
+}
+
+.variacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffd4dc;
+    padding: 40px 60px;
+    border-radius: 30px;
+    margin: 40px;
+    gap: 30px;
+}
+
+.variacao .texto {
+    flex: 1;
+    color: black;
+    font-size: 18px;
+}
+
+.variacao .texto h2 {
+    color: #f18397;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.variacao .imagem {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.variacao .imagem img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}

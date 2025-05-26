@@ -1,0 +1,128 @@
+  body {
+      margin: 0;
+      font-family: "Georgia", serif;
+      background-color: #fff5f9;
+      overflow-x: hidden;
+  }
+
+  .cabecalho {
+      background: #d4d1d1b0;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+  }
+
+  nav {
+      display: flex;
+      margin-right: 1%;
+  }
+
+  nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+  }
+
+  nav a:nth-child(2) {
+      color: #f06e9b;
+  }
+
+  .a_atual::after {
+      content: "";
+      background-color: #ee80a1;
+      display: block;
+      width: 100%;
+      height: 5px;
+  }
+
+  nav a::after {
+      content: "";
+      background-color: #f4a4bc;
+      display: block;
+      width: 10%;
+      height: 5px;
+      display: none;
+      animation: cabeçalho 1s ease;
+  }
+
+  @keyframes animaCabecalho {
+      to {
+          width: 100%;
+      }
+  }
+
+  nav a:hover::after {
+      display: block;
+  }
+
+  .intro {
+      background-color: #fff0f5;
+      padding: 40px 60px;
+      color: #f18397;
+  }
+
+  .intro h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+  }
+
+  .oQueE {
+      background-color: #fff0f5;
+      padding: 40px 60px;
+      color: #f18397;
+  }
+
+  .oQueE h2,
+  .oQueE h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+  }
+
+  .oQueE p {
+      color: black;
+      font-size: 18px;
+      margin-top: 30px;
+      max-width: 700px;
+  }
+
+  .ondeNasceu,
+  .historiaBallet,
+  .nome,
+  .beneficios {
+      background-color: #ffd4dc;
+      padding: 40px 60px;
+      border-radius: 30px;
+      margin: 40px;
+  }
+
+  .ondeNasceu h2,
+  .historiaBallet h2,
+  .nome h2,
+  .beneficios h2 {
+      color: #f18397;
+      font-size: 26px;
+  }
+
+  .historiaBallet h2 {
+      text-align: right;
+  }
+
+  .nome h2,
+  .beneficios h2 {
+      text-align: left;
+  }
+
+  .ondeNasceu p,
+  .historiaBallet p,
+  .nome p,
+  .beneficios p {
+      color: black;
+      font-size: 18px;
+      margin-top: 20px;
+  }
