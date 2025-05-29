@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Personalidade</title>
+    <link rel="stylesheet" href="./css/quizQuestoes.css">
+    <script src="js/quizPerguntas.js" defer></script>
+</head>
+
+<body>
+    <div class="QuizdePersonalidade">
+        <div class="quizFemininoMasculino">
+            <h2 id="pergunta">Gostaria de saber qual tipo de variação?</h2>
+            <div id="resposta-buttons">
+                <div class="btnMasculinaFeminina">
+                    <button onclick="trocarTelaFeminino()" class="btn">Feminina</button>
+                    <button onclick="trocarTelaMasculino()"  class="btn">Masculina</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="quizPergumtas.js"></script>
+</body>
+
+</html>
+<script>
+    function trocarTelaFeminino() {
+        window.location.href = "quizFeminino.html"
+    }
+    function trocarTelaMasculino() {
+        window.location.href = "quizMasculino.html"
+    }
+</script>

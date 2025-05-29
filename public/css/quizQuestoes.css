@@ -1,0 +1,71 @@
+/* Página de Perguntas */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Georgia", serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffd4dc;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.QuizdePersonalidade {
+    background-color: #fff;
+    width: 90%;
+    max-width: 600px;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.quiz h2,
+.quizFemininoMasculino h2 {
+    font-size: 20px;
+    color: #e05282;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.btncima,
+.btnbaixo,
+.btnMasculinaFeminina {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.btn {
+    background: #fdc6d9;
+    color: #333;
+    font-weight: 600;
+    width: 45%;
+    min-width: 120px;
+    border: 1px solid #ddd;
+    padding: 12px 0;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover:not([disabled]) {
+    background-color: #f06e9b;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+

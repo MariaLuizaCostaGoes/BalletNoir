@@ -1,227 +1,228 @@
+const perguntasFemininas = [
+        {
+            pergunta: 'Qual dessas qualidades você mais valoriza em si?',
+            respostas: [
+                { alternativa: 'Delicadeza e graça', variacao: 'FadaAçucarada' },
+                { alternativa: 'Alegria e vivacidade', variacao: 'GisellePrimeiroAto' },
+                { alternativa: 'Tristeza e beleza etérea', variacao: 'GiselleSegundoAto' },
+                { alternativa: 'Força e independência', variacao: 'Kitri' },
+            ],
+        },
+        {
+            pergunta: 'Em um momento de crise, o que você faz?',
+            respostas: [
+                { alternativa: 'Mantém a esperança com ternura', variacao: 'Aurora' },
+                { alternativa: 'Reage com inteligência e audácia', variacao: 'Esmeralda' },
+                { alternativa: 'Expressa sentimentos com intensidade', variacao: 'Odile' },
+                { alternativa: 'Age com leveza, buscando harmonia', variacao: 'Cupido' },
+            ],
+        },
+        {
+            pergunta: 'Como você lida com o amor?',
+            respostas: [
+                { alternativa: 'Com devoção, mesmo diante do sofrimento', variacao: 'NikiyaPrimeiroAto' },
+                { alternativa: 'Com mistério e sedução', variacao: 'Scherazade' },
+                { alternativa: 'Com paixão alegre e determinada', variacao: 'Kitri' },
+                { alternativa: 'Com leveza e idealismo', variacao: 'FadaAçucarada' },
+            ],
+        },
+        {
+            pergunta: 'O que mais te atrai em uma apresentação de balé?',
+            respostas: [
+                { alternativa: 'Elegância e precisão técnica', variacao: 'Paquita' },
+                { alternativa: 'Energia e empolgação', variacao: 'ChamasdeParis' },
+                { alternativa: 'Espiritualidade e lirismo', variacao: 'GiselleSegundoAto' },
+                { alternativa: 'Movimentos leves e fantasiosos', variacao: 'Cupido' },
+            ],
+        },
+        {
+            pergunta: 'Qual dessas frases te representa melhor?',
+            respostas: [
+                { alternativa: 'Sou como um espírito que protege quem amo', variacao: 'GiselleSegundoAto' },
+                { alternativa: 'Minha alegria é contagiante', variacao: 'GisellePrimeiroAto' },
+                { alternativa: 'Uso charme como minha arma', variacao: 'Odile' },
+                { alternativa: 'Tenho uma força que poucos enxergam', variacao: 'Esmeralda' },
+            ],
+        },
+        {
+            pergunta: 'Escolha uma ambientação que mais te atrai:',
+            respostas: [
+                { alternativa: 'Um reino encantado feito de doces', variacao: 'FadaAçucarada' },
+                { alternativa: 'Uma floresta mágica cheia de seres místicos', variacao: 'Cupido' },
+                { alternativa: 'Uma cidade vibrante durante uma revolução', variacao: 'ChamasdeParis' },
+                { alternativa: 'Um palácio exótico cheio de mistério', variacao: 'Scherazade' },
+            ],
+        },
+        {
+            pergunta: 'Quando está em público, você tende a...',
+            respostas: [
+                { alternativa: 'Encantar com charme e carisma', variacao: 'Paquita' },
+                { alternativa: 'Impressionar com intensidade dramática', variacao: 'Odile' },
+                { alternativa: 'Cativar pela sutileza e elegância', variacao: 'Aurora' },
+                { alternativa: 'Animar o ambiente com alegria', variacao: 'Kitri' },
+            ],
+        },
+        {
+            pergunta: 'Qual dessas figuras históricas ou literárias você mais se identifica?',
+            respostas: [
+                { alternativa: 'Uma cigana rebelde e livre', variacao: 'Esmeralda' },
+                { alternativa: 'Uma princesa destinada a grandes feitos', variacao: 'Aurora' },
+                { alternativa: 'Uma sacerdotisa apaixonada e trágica', variacao: 'NikiyaPrimeiroAto' },
+                { alternativa: 'Uma heroína romântica e leal', variacao: 'GiselleSegundoAto' },
+            ],
+        },
+        {
+            pergunta: 'Como você gostaria de ser lembrada?',
+            respostas: [
+                { alternativa: 'Por minha leveza e delicadeza', variacao: 'FadaAçucarada' },
+                { alternativa: 'Por minha coragem e intensidade', variacao: 'Scherazade' },
+                { alternativa: 'Por minha nobreza e elegância', variacao: 'Paquita' },
+                { alternativa: 'Por minha paixão e força', variacao: 'Kitri' },
+            ],
+        },
+        {
+            pergunta: 'Como você age quando está apaixonada?',
+            respostas: [
+                { alternativa: 'Com doçura e admiração', variacao: 'GisellePrimeiroAto' },
+                { alternativa: 'Com intensidade e entrega', variacao: 'NikiyaPrimeiroAto' },
+                { alternativa: 'Com sedução e mistério', variacao: 'Scherazade' },
+                { alternativa: 'Com energia e ousadia', variacao: 'ChamasdeParis' },
+            ],
+        },
+        {
+            pergunta: 'Qual dessas características é mais você?',
+            respostas: [
+                { alternativa: 'Majestosa e decidida', variacao: 'Aurora' },
+                { alternativa: 'Romântica e doce', variacao: 'GisellePrimeiroAto' },
+                { alternativa: 'Brincalhona e amorosa', variacao: 'Cupido' },
+                { alternativa: 'Energética e rebelde', variacao: 'ChamasdeParis' },
+            ],
+        },
+        {
+            pergunta: 'Se fosse uma personagem de conto de fadas, seria...',
+            respostas: [
+                { alternativa: 'A fada encantada que guia os outros', variacao: 'FadaAçucarada' },
+                { alternativa: 'A princesa que supera desafios', variacao: 'Aurora' },
+                { alternativa: 'A heroína que luta por justiça', variacao: 'Esmeralda' },
+                { alternativa: 'A mulher misteriosa que guarda um segredo', variacao: 'Scherazade' },
+            ],
+        },
+        {
+            pergunta: 'Qual desses temas mais te inspira?',
+            respostas: [
+                { alternativa: 'Redenção e perdão', variacao: 'GiselleSegundoAto' },
+                { alternativa: 'Liberdade e aventura', variacao: 'ChamasdeParis' },
+                { alternativa: 'Elegância e tradição', variacao: 'Paquita' },
+                { alternativa: 'Sedução e engano', variacao: 'Odile' },
+            ],
+        },
+        {
+            pergunta: 'Qual dessas emoções você expressa melhor?',
+            respostas: [
+                { alternativa: 'Espiritualidade e entrega', variacao: 'NikiyaPrimeiroAto' },
+                { alternativa: 'Fúria contida e poder', variacao: 'Odile' },
+                { alternativa: 'Carisma e leveza', variacao: 'Kitri' },
+                { alternativa: 'Ternura e inocência', variacao: 'GisellePrimeiroAto' },
+            ],
+        },
+    ];
+
 
 const perguntasMasculinas = [
-    {
-        frase: 'Qual dessas qualidades mais te define?',
-        respostas: [
-            { alternativa: 'Força e paixão', variacao: 'Solor' },
-            { alternativa: 'Espírito aventureiro e charme', variacao: 'Basilio' },
-            { alternativa: 'Nobreza e fidelidade', variacao: 'Príncipe Désiré' },
-            { alternativa: 'Tristeza e arrependimento', variacao: 'Albrecht' },
-        ],
-    },
-    {
-        frase: 'O que melhor representa sua motivação?',
-        respostas: [
-            { alternativa: 'Proteger quem amo, mesmo com risco', variacao: 'Jean de Brienne' },
-            { alternativa: 'Lutar contra o destino por amor', variacao: 'Príncipe Siegfried' },
-            { alternativa: 'Demonstrar lealdade com talento', variacao: 'Ali' },
-            { alternativa: 'Coragem diante das consequências', variacao: 'Acteon' },
-        ],
-    },
-    {
-        frase: 'Qual dessas cenas mais te emociona?',
-        respostas: [
-            { alternativa: 'Sonhar com quem perdeu', variacao: 'Solor' },
-            { alternativa: 'Fingir a morte por amor', variacao: 'Basilio' },
-            { alternativa: 'Despertar alguém com um beijo', variacao: 'Príncipe Désiré' },
-            { alternativa: 'Ser salvo por quem magoou', variacao: 'Albrecht' },
-        ],
-    },
-    {
-        frase: 'Como você lida com desafios?',
-        respostas: [
-            { alternativa: 'Com heroísmo e bravura', variacao: 'Jean de Brienne' },
-            { alternativa: 'Com intensidade emocional', variacao: 'Príncipe Siegfried' },
-            { alternativa: 'Com virtuosismo e habilidade', variacao: 'Ali' },
-            { alternativa: 'Com coragem, mesmo sem saída', variacao: 'Acteon' },
-        ],
-    },
-    {
-        frase: 'Qual dessas palavras mais ressoa com você?',
-        respostas: [
-            { alternativa: 'Redenção', variacao: 'Albrecht' },
-            { alternativa: 'Aventura', variacao: 'Basilio' },
-            { alternativa: 'Devoção', variacao: 'Solor' },
-            { alternativa: 'Destino', variacao: 'Príncipe Siegfried' },
-        ],
-    },
-    {
-        frase: 'Você prefere ser reconhecido por...',
-        respostas: [
-            { alternativa: 'Sua bravura em batalha', variacao: 'Jean de Brienne' },
-            { alternativa: 'Sua elegância e nobreza', variacao: 'Príncipe Désiré' },
-            { alternativa: 'Sua ousadia e astúcia', variacao: 'Basilio' },
-            { alternativa: 'Sua técnica impecável', variacao: 'Ali' },
-        ],
-    },
-    {
-        frase: 'O que mais te atrai em uma história?',
-        respostas: [
-            { alternativa: 'Sacrifício por amor', variacao: 'Solor' },
-            { alternativa: 'Triunfo com humor', variacao: 'Basilio' },
-            { alternativa: 'Ilusões e reviravoltas', variacao: 'Príncipe Siegfried' },
-            { alternativa: 'Tragédia e perdão', variacao: 'Albrecht' },
-        ],
-    },
-    {
-        frase: 'Como você descreveria sua energia?',
-        respostas: [
-            { alternativa: 'Explosiva e intensa', variacao: 'Ali' },
-            { alternativa: 'Contida, mas poderosa', variacao: 'Príncipe Siegfried' },
-            { alternativa: 'Alegre e despreocupada', variacao: 'Basilio' },
-            { alternativa: 'Serena e heroica', variacao: 'Jean de Brienne' },
-        ],
-    },
-    {
-        frase: 'Em uma situação crítica, você...',
-        respostas: [
-            { alternativa: 'Luta até o fim, mesmo com medo', variacao: 'Acteon' },
-            { alternativa: 'Segue seu coração, custe o que custar', variacao: 'Solor' },
-            { alternativa: 'Tenta proteger os outros antes de si', variacao: 'Jean de Brienne' },
-            { alternativa: 'Recorre à esperteza para sair da situação', variacao: 'Basilio' },
-        ],
-    },
-    {
-        frase: 'Se pudesse escolher um destino, seria...',
-        respostas: [
-            { alternativa: 'A redenção após o erro', variacao: 'Albrecht' },
-            { alternativa: 'O reencontro com o verdadeiro amor', variacao: 'Príncipe Siegfried' },
-            { alternativa: 'A liberdade conquistada com coragem', variacao: 'Ali' },
-            { alternativa: 'A vitória sobre um grande inimigo', variacao: 'Jean de Brienne' },
-        ],
-    },
-];
+        {
+            pergunta: 'Qual dessas qualidades mais te define?',
+            respostas: [
+                { alternativa: 'Força e paixão', variacao: 'Solor' },
+                { alternativa: 'Espírito aventureiro e charme', variacao: 'Basilio' },
+                { alternativa: 'Nobreza e fidelidade', variacao: 'PríncipeDésiré' },
+                { alternativa: 'Leveza mágica e mistério', variacao: 'OPássaroAzul' },
+            ],
+        },
+        {
+            pergunta: 'O que melhor representa sua motivação?',
+            respostas: [
+                { alternativa: 'Proteger quem amo, mesmo com risco', variacao: 'JeandeBrienne' },
+                { alternativa: 'Buscar liberdade e aventura', variacao: 'LeCorsaire' },
+                { alternativa: 'Lutar contra o destino por amor', variacao: 'PríncipeSiegfried' },
+                { alternativa: 'Demonstrar lealdade com talento', variacao: 'Ali' },
+            ],
+        },
+        {
+            pergunta: 'Qual dessas cenas mais te emociona?',
+            respostas: [
+                { alternativa: 'Sonhar com quem perdeu', variacao: 'Solor' },
+                { alternativa: 'Fingir a morte por amor', variacao: 'Basilio' },
+                { alternativa: 'Despertar alguém com um beijo', variacao: 'PríncipeDésiré' },
+                { alternativa: 'Flutuar como uma criatura etérea', variacao: 'OPássaroAzul' },
+            ],
+        },
+        {
+            pergunta: 'Como você lida com desafios?',
+            respostas: [
+                { alternativa: 'Com heroísmo e bravura', variacao: 'JeandeBrienne' },
+                { alternativa: 'Com intensidade emocional', variacao: 'PríncipeSiegfried' },
+                { alternativa: 'Com astúcia e coragem pirata', variacao: 'LeCorsaire' },
+                { alternativa: 'Com virtuosismo e habilidade', variacao: 'Ali' },
+            ],
+        },
+        {
+            pergunta: 'Qual dessas palavras mais ressoa com você?',
+            respostas: [
+                { alternativa: 'Redenção', variacao: 'Albrecht' },
+                { alternativa: 'Aventura', variacao: 'Basilio' },
+                { alternativa: 'Leveza', variacao: 'OPássaroAzul' },
+                { alternativa: 'Destino', variacao: 'PríncipeSiegfried' },
+            ],
+        },
+        {
+            pergunta: 'Você prefere ser reconhecido por...',
+            respostas: [
+                { alternativa: 'Sua bravura em batalha', variacao: 'JeandeBrienne' },
+                { alternativa: 'Sua elegância e nobreza', variacao: 'PríncipeDésiré' },
+                { alternativa: 'Sua ousadia e astúcia', variacao: 'Basilio' },
+                { alternativa: 'Sua liberdade conquistada', variacao: 'LeCorsaire' },
+            ],
+        },
+        {
+            pergunta: 'O que mais te atrai em uma história?',
+            respostas: [
+                { alternativa: 'Sacrifício por amor', variacao: 'Solor' },
+                { alternativa: 'Tragédia e perdão', variacao: 'Albrecht' },
+                { alternativa: 'Virtuosismo e lealdade', variacao: 'Ali' },
+                { alternativa: 'Conflito de honra e dever', variacao: 'PríncipeSiegfried' },
+            ],
+        },
+        {
+            pergunta: 'Como você descreveria sua energia?',
+            respostas: [
+                { alternativa: 'Explosiva e intensa', variacao: 'Ali' },
+                { alternativa: 'Contida, mas poderosa', variacao: 'PríncipeDésiré' },
+                { alternativa: 'Alegre e despreocupada', variacao: 'Basilio' },
+                { alternativa: 'Firme e determinada', variacao: 'Acteon' },
+            ],
+        },
+        {
+            pergunta: 'Em uma situação crítica, você...',
+            respostas: [
+                { alternativa: 'Luta até o fim, mesmo com medo', variacao: 'Acteon' },
+                { alternativa: 'Segue seu coração, custe o que custar', variacao: 'Solor' },
+                { alternativa: 'Usa sua inteligência e leveza', variacao: 'OPássaroAzul' },
+                { alternativa: 'Toma decisões com base na justiça', variacao: 'JeandeBrienne' },
+            ],
+        },
+        {
+            pergunta: 'Se pudesse escolher um destino, seria...',
+            respostas: [
+                { alternativa: 'A redenção após o erro', variacao: 'Albrecht' },
+                { alternativa: 'Uma jornada em alto-mar', variacao: 'LeCorsaire' },
+                { alternativa: 'A vitória sobre um grande inimigo', variacao: 'Acteon' },
+                { alternativa: 'Um final de conto de fadas', variacao: 'PríncipeDésiré' },
+            ],
+        },
+    ];
 
-const perguntasFemininas = [
-   {
-        frase: 'Qual dessas qualidades você mais valoriza em si?',
-        respostas: [
-            { alternativa: 'Delicadeza e graça', variacao: 'Fada Açucarada' },
-            { alternativa: 'Alegria e vivacidade', variacao: 'Giselle Primeiro Ato' },
-            { alternativa: 'Tristeza e beleza etérea', variacao: 'Giselle Segundo Ato' },
-            { alternativa: 'Força e independência', variacao: 'Kitri' },
-        ],
-    },
-    {
-        frase: 'Em um momento de crise, o que você faz?',
-        respostas: [
-            { alternativa: 'Mantém a esperança com ternura', variacao: 'Aurora' },
-            { alternativa: 'Reage com inteligência e audácia', variacao: 'Esmeralda' },
-            { alternativa: 'Expressa sentimentos com intensidade', variacao: 'Odile' },
-            { alternativa: 'Age com leveza, buscando harmonia', variacao: 'Cupido' },
-        ],
-    },
-    {
-        frase: 'Como você lida com o amor?',
-        respostas: [
-            { alternativa: 'Com devoção, mesmo diante do sofrimento', variacao: 'Nikiya Primeiro Ato' },
-            { alternativa: 'Com mistério e sedução', variacao: 'Scherazade' },
-            { alternativa: 'Com paixão alegre e determinada', variacao: 'Kitri' },
-            { alternativa: 'Com leveza e idealismo', variacao: 'Fada Açucarada' },
-        ],
-    },
-    {
-        frase: 'O que mais te atrai em uma apresentação de balé?',
-        respostas: [
-            { alternativa: 'Elegância e precisão técnica', variacao: 'Paquita' },
-            { alternativa: 'Energia e empolgação', variacao: 'Chamas de Paris' },
-            { alternativa: 'Espiritualidade e lirismo', variacao: 'Nikiya Segundo Ato' },
-            { alternativa: 'Movimentos leves e fantasiosos', variacao: 'O Pássaro Azul' },
-        ],
-    },
-    {
-        frase: 'Qual dessas frases te representa melhor?',
-        respostas: [
-            { alternativa: 'Sou como um espírito que protege quem amo', variacao: 'Giselle Segundo Ato' },
-            { alternativa: 'Minha alegria é contagiante', variacao: 'Giselle Primeiro Ato' },
-            { alternativa: 'Uso charme como minha arma', variacao: 'Odile' },
-            { alternativa: 'Tenho uma força que poucos enxergam', variacao: 'Esmeralda' },
-        ],
-    },
-    {
-        frase: 'Escolha uma ambientação que mais te atrai:',
-        respostas: [
-            { alternativa: 'Um reino encantado feito de doces', variacao: 'Fada Açucarada' },
-            { alternativa: 'Uma floresta mágica cheia de seres místicos', variacao: 'Cupido' },
-            { alternativa: 'Uma cidade vibrante durante uma revolução', variacao: 'Chamas de Paris' },
-            { alternativa: 'Uma praia exótica em meio a aventuras de piratas', variacao: 'Medora' },
-        ],
-    },
-    {
-        frase: 'Quando está em público, você tende a...',
-        respostas: [
-            { alternativa: 'Encantar com charme e carisma', variacao: 'Paquita' },
-            { alternativa: 'Impressionar com intensidade dramática', variacao: 'Odile' },
-            { alternativa: 'Cativar pela sutileza e elegância', variacao: 'Aurora' },
-            { alternativa: 'Animar o ambiente com alegria', variacao: 'Kitri' },
-        ],
-    },
-    {
-        frase: 'Qual dessas figuras históricas ou literárias você mais se identifica?',
-        respostas: [
-            { alternativa: 'Uma cigana rebelde e livre', variacao: 'Esmeralda' },
-            { alternativa: 'Uma princesa destinada a grandes feitos', variacao: 'Raymonda' },
-            { alternativa: 'Uma sacerdotisa apaixonada e trágica', variacao: 'Nikiya Primeiro Ato' },
-            { alternativa: 'Uma heroína romântica e leal', variacao: 'Giselle Segundo Ato' },
-        ],
-    },
-    {
-        frase: 'Como você gostaria de ser lembrada?',
-        respostas: [
-            { alternativa: 'Por minha leveza e delicadeza', variacao: 'Fada Açucarada' },
-            { alternativa: 'Por minha coragem e intensidade', variacao: 'Scherazade' },
-            { alternativa: 'Por minha nobreza e elegância', variacao: 'Raymonda' },
-            { alternativa: 'Por minha paixão e força', variacao: 'Kitri' },
-        ],
-    },
-    {
-        frase: 'Como você age quando está apaixonado?',
-        respostas: [
-            { alternativa: 'Com doçura e admiração', variacao: 'Giselle Primeiro Ato' },
-            { alternativa: 'Com intensidade e entrega', variacao: 'Nikiya Primeiro Ato' },
-            { alternativa: 'Com sedução e mistério', variacao: 'Scherazade' },
-            { alternativa: 'Com proteção e coragem', variacao: 'Gulnara' },
-        ],
-    },
-    {
-        frase: 'Qual dessas características é mais você?',
-        respostas: [
-            { alternativa: 'Majestosa e decidida', variacao: 'Raymonda' },
-            { alternativa: 'Romântica e doce', variacao: 'Aurora' },
-            { alternativa: 'Brincalhona e amorosa', variacao: 'Cupido' },
-            { alternativa: 'Energética e rebelde', variacao: 'Chamas de Paris' },
-        ],
-    },
-    {
-        frase: 'Se fosse uma personagem de conto de fadas, seria...',
-        respostas: [
-            { alternativa: 'A fada encantada que guia os outros', variacao: 'Fada Açucarada' },
-            { alternativa: 'A princesa que supera desafios', variacao: 'Aurora' },
-            { alternativa: 'A heroína que luta por justiça', variacao: 'Esmeralda' },
-            { alternativa: 'A mulher misteriosa que guarda um segredo', variacao: 'Scherazade' },
-        ],
-    },
-    {
-        frase: 'Qual desses temas mais te inspira?',
-        respostas: [
-            { alternativa: 'Redenção e perdão', variacao: 'Giselle Segundo Ato' },
-            { alternativa: 'Liberdade e aventura', variacao: 'Medora' },
-            { alternativa: 'Elegância e tradição', variacao: 'Paquita' },
-            { alternativa: 'Sedução e engano', variacao: 'Odile' },
-        ],
-    },
-    {
-        frase: 'Qual dessas situações você prefere viver?',
-        respostas: [
-            { alternativa: 'Dançar sob a luz das estrelas como um espírito livre', variacao: 'Nikiya Segundo Ato' },
-            { alternativa: 'Ser o centro de uma celebração real', variacao: 'Aurora' },
-            { alternativa: 'Viver no coração da revolução', variacao: 'Chamas de Paris' },
-            { alternativa: 'Flutuar como uma ave mágica pelos céus', variacao: 'O Pássaro Azul' },
-        ],
-    },
-];
 
-const pontuacao = {
+const pontuacaoFeminina = {
     FadaAcucarada: 0,
     GisellePrimeiroAto: 0,
     GiselleSegundoAto: 0,
@@ -234,7 +235,6 @@ const pontuacao = {
     Paquita: 0,
     Raymonda: 0,
     Medora: 0,
-    Gulnara: 0,
     NikiyaPrimeiroAto: 0,
     NikiyaSegundoAto: 0,
     OPássaroAzul: 0,
@@ -243,6 +243,9 @@ const pontuacao = {
     ChamasdeParis: 0,
     OTalismã: 0,
     Scherazade: 0,
+};
+
+const pontuacaoMasculina = {
     Solor: 0,
     Basilio: 0,
     PríncipeSiegfried: 0,
@@ -251,277 +254,376 @@ const pontuacao = {
     JeandeBrienne: 0,
     Ali: 0,
     Acteon: 0,
-};
-
-let indicePergunta = 0;
-button_iniciar = document.getElementById('quiz-button-start');
-div_quiz = document.getElementById('quiz-main-container');
-pergunta_quiz = document.getElementById('quiz-descricao');
-titulo_quiz = document.getElementById('quiz-titulo');
-
-const dataHoraMomento = () => {
-    const date = new Date();
-    const ano = date.getFullYear();
-    const mes = String(date.getMonth() + 1).padStart(2, '0');
-    const dia = String(date.getDate()).padStart(2, '0');
-    const horas = String(date.getHours()).padStart(2, '0');
-    const minutos = String(date.getMinutes()).padStart(2, '0');
-    const segundos = String(date.getSeconds()).padStart(2, '0');
-
-    const dataHoraFormatada = `${ano}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
-    return dataHoraFormatada;
-};
-
-var idUsuarioQuiz = sessionStorage.ID_USUARIO;
-
-const iniciarQuiz = (startTime, idUsuario) => {
-    console.log('DATA DE INICIO: ', startTime);
-
-    fetch('/quiz/inicio', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            dataHoraInicioServer: dataHoraInicio,
-            idUsuarioServer: idUsuario,
-        }),
-    })
-        .then((resposta) => {
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then((json) => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.DATA_INICIO = json.dataHoraInicio;
-                    sessionStorage.ID_USUARIO_INICIO = json.idUsuario;
-                });
-            } else {
-                console.log('Houve um erro ao captar a data e hora de inicio!');
-                resposta.text().then((texto) => {
-                    console.error(texto);
-                });
-            }
-        })
-        .catch((erro) => {
-            console.log(erro);
-        });
-
-    return false;
-};
-
-const finalizarQuiz = (dataHoraInicioFinal, dataHoraFinal, idUsuario, idVariaca0) => {
-    console.log('DATA DE FINALIZACAO: ', dataHoraFinal);
-
-    fetch('/quiz/final', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            dataHoraInicioFinalServer: dataHoraInicioFinal,
-            dataHoraFinalServer: dataHoraFinal,
-            idUsuarioServer: idUsuario,
-            idVariaca0Server: idVariaca0,
-        }),
-    })
-        .then((resposta) => {
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then((json) => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.DATA_INICIO_FINAL = json.dataHoraInicioFinal;
-                    sessionStorage.DATA_FINAL = json.dataHoraFinal;
-                    sessionStorage.ID_USUARIO_FINAL = json.idUsuario;
-                    sessionStorage.ID_VARIACAO = json.idResultado;
-                });
-            } else {
-                console.log('Houve um erro ao captar a data e hora de finzalização!');
-                resposta.text().then((texto) => {
-                    console.error(texto);
-                });
-            }
-        })
-        .catch((erro) => {
-            console.log(erro);
-        });
-    resultado();
-
-    return false;
-};
-
-button_iniciar.addEventListener('click', () => {
-    iniciarQuiz(dataHoraMomento(), idUsuarioQuiz);
-    button_iniciar.style.display = 'none';
-    pergunta_quiz.style.marginTop = '0.5%';
-    pergunta_quiz.style.marginBottom = '3%';
-    mostrarPergunta();
-});
-
-const mostrarPergunta = () => {
-
-    if (!quizIniciado) {
-        titulo_quiz.innerHTML = 'Escolha';
-        pergunta_quiz.innerHTML = perguntaGenero.frase;
-
-        div_quiz.innerHTML = `
-			<div class="perguntas-cima">
-				<div class="pergunta" onclick="selecionarGenero('masculino')">Masculinas</div>
-				<div class="pergunta" onclick="selecionarGenero('feminino')">Femininas</div>
-			</div>
-		`;
-        return; // para aqui e espera o usuário clicar em uma opção
-    }
-
-    const pergunta = arrayPerguntas[indicePergunta];
-    titulo_quiz.innerHTML = `${indicePergunta + 1}ª pergunta`;
-
-    pergunta_quiz.innerHTML = pergunta.frase;
-
-    div_quiz.innerHTML = `
-  <div class="perguntas-cima">
-    <div class="pergunta" onclick="responder(0)">	
-      ${pergunta.respostas[0].alternativa}
-    </div>
-    <div class="pergunta" onclick="responder(1)">
-    ${pergunta.respostas[1].alternativa}
-    </div>
-  </div>
-
-  <div class="perguntas-baixo">
-    <div class="pergunta" onclick="responder(2)">
-    ${pergunta.respostas[2].alternativa}
-    </div>
-    <div class="pergunta" onclick="responder(3)">
-    ${pergunta.respostas[3].alternativa}
-    </div>
-  </div>
-  `;
-};
-
-const selecionarGenero = (genero) => {
-    generoSelecionado = genero;
-    arrayPerguntasAtual = genero == 'masculino' ? perguntasMasculinas : perguntasFemininas;
-    quizIniciado = true;
-    iniciarQuiz(dataHoraMomento(), idUsuarioQuiz);
-    mostrarPergunta(); // chama a primeira pergunta real
+    LeCorsaire: 0,
+    OPássaroAzul: 0,
 };
 
 
-const verificarResultado = () => {
-    let personagem = '';
-    let pontPersonagem = 0;
+const perguntaElement = document.getElementById("pergunta");
+const respostasButtons = document.getElementById("resposta-buttons");
+const nextButtons = document.getElementById("next-btn");
 
-    for (let p in pontuacao) {
-        if (pontuacao[p] > pontPersonagem) {
-            pontPersonagem = pontuacao[p];
-            personagem = p;
-        }
-    }
+// ver qual questão é a atual
+let IndexPergunta = 0
 
-    return personagem;
-};
+function startQuizMasc() {
+    IndexPergunta = 0
+    mostrarPerguntaMasc();
 
-const idPersonagem = () => {
-    let nomeVariacao = verificarResultado();
+}
 
-    if (nomeVariaca0 == 'FadaAcucarada') return 0;
-    else if (nomeVriacao == 'GisellePrimeiroAto') return 1;
-    else if (nomeVariacao == 'GiselleSegundoAto') return 2;
-    else if (nomeVariacao == 'Peasant') return 3;
-    else if (nomeVariacao == 'Cupido') return 4;
-    else if (nomeVariacao == 'Kitri') return 5;
-    else if (nomeVariacao == 'Odile') return 6;
-    else if (nomeVariacao == 'Aurora') return 7;
-    else if (nomeVariacao == 'Esmeralda') return 8;
-    else if (nomeVariacao == 'Paquita') return 9;
-    else if (nomeVariacao == 'Raymonda') return 10;
-    else if (nomeVariacao == 'Medora') return 11;
-    else if (nomeVariacao == 'Gulnara') return 12;
-    else if (nomeVariacao == 'NikiyaPrimeiroAto') return 13;
-    else if (nomeVariacao == 'NikiyaSegundoAto') return 14;
-    else if (nomeVariacao == 'OPássaroAzul') return 15;
-    else if (nomeVariacao == 'Petrouchka') return 16;
-    else if (nomeVariacao == 'Spartacus') return 17;
-    else if (nomeVariacao == 'ChamasdeParis') return 18;
-    else if (nomeVariacao == 'OTalismã') return 19;
-    else if (nomeVariacao == 'Scherazade') return 20;
-    else if (nomeVariacao == 'Solor') return 21;
-    else if (nomeVariacao == 'Basilio') return 22;
-    else if (nomeVariacao == 'PríncipeSiegfried') return 23;
-    else if (nomeVariacao == 'PríncipeDésiré') return 24;
-    else if (nomeVariacao == 'Albrecht') return 25;
-    else if (nomeVariacao == 'JeandeBrienne') return 26;
-    else if (nomeVariacao == 'Ali') return 27;
-    else if (nomeVariacao == 'Acteon') return 28;
-    else return 29;
+function startQuizFem() {
+    IndexPergunta = 0
+    mostrarPerguntaFem();
 
-};
+}
+let currentQuestionMasc = '';
+let currentQuestionFem = '';
 
-const responder = (indiceOpcao) => {
-    const personagem = arrayPerguntas[indicePergunta].respostas[indiceOpcao].personagem;
-    pontuacao[personagem]++;
+function mostrarPerguntaMasc() {
+    currentQuestionMasc = perguntasFemininas[IndexPergunta].pergunta
+    console.log(currentQuestionMasc)
+    perguntaElement.innerHTML = currentQuestionMasc
+    mostrarALternativasMasc()
+}
+function mostrarPerguntaFem() {
+    currentQuestionFem = perguntasFemininas[IndexPergunta].pergunta
+    console.log(currentQuestionFem)
+    perguntaElement.innerHTML = currentQuestionFem
+    mostrarALternativasFem()
+}
 
-    indicePergunta++;
+function mostrarALternativasFem() {
 
-    if (indicePergunta < arrayPerguntas.length) {
-        mostrarPergunta();
-    } else {
-        let dataHoraInicioFinal = sessionStorage.DATA_INICIO;
-        let idPersonagemResultado = idPersonagem();
-        finalizarQuiz(dataHoraInicioFinal, dataHoraMomento(), idUsuarioQuiz, idPersonagemResultado);
-    }
-};
+    var botao1 = document.getElementById('btn-1')
+    var botao2 = document.getElementById('btn-2')
+    var botao3 = document.getElementById('btn-3')
+    var botao4 = document.getElementById('btn-4')
+    var pergunta = perguntasFemininas[IndexPergunta].respostas;
+    botao1.innerHTML = pergunta[0].alternativa
+    botao2.innerHTML = pergunta[1].alternativa
+    botao3.innerHTML = pergunta[2].alternativa
+    botao4.innerHTML = pergunta[3].alternativa
+}
 
-const resultado = () => {
-    pergunta_quiz.innerHTML = '';
+function mostrarALternativasMasc() {
 
-    let personagemEscolhido = verificarResultado();
+    var botao1 = document.getElementById('btn-1')
+    var botao2 = document.getElementById('btn-2')
+    var botao3 = document.getElementById('btn-3')
+    var botao4 = document.getElementById('btn-4')
+    var pergunta = perguntasMasculinas[IndexPergunta].respostas;
+    botao1.innerHTML = pergunta[0].alternativa
+    botao2.innerHTML = pergunta[1].alternativa
+    botao3.innerHTML = pergunta[2].alternativa
+    botao4.innerHTML = pergunta[3].alternativa
+}
 
-    mostrarResultado(personagemEscolhido);
-};
+function respostaFem(numResposta) {
+    console.log('número da resposta: ', numResposta)
+    const perguntaAtual = perguntasFemininas[IndexPergunta]
+    const variacao = perguntaAtual.respostas[numResposta].variacao
 
-const mostrarResultado = (personagemEscolhido) => {
-    titulo_quiz.innerHTML = 'Resultado';
-    if (pergunta_quiz) {
-        pergunta_quiz.remove();
-    }
+    pontuacaoFeminina[variacao]++
 
-    div_quiz.innerHTML = `
-    <div class="quiz-page-resultado">
-    <p>Seu personagem é: <span class="quiz-page-txt-yellow">${personagemEscolhido}</span></p>
-    <img src="img/resultado/${personagemEscolhido}-resultado.gif" class="quiz-page-img-resultado" id="img-resultado">
-    <p class="quiz-page-text-desc-resultado">Confira a descrição do personagem e dados sobre o quiz no seu <a href="perfil.html" class="quiz-final-link"><span class="quiz-page-txt-yellow">perfil</span></a>!</p>
-    </div>
+    IndexPergunta++
+
+    if (IndexPergunta < perguntasFemininas.length) {
+        mostrarPerguntaFem()
+		mostrarALternativasFem();
+	} else {
+        alert('socorro')
+	}
+}
+
+function respostaFem(numResposta) {
+    console.log('número da resposta: ', numResposta)
+    const perguntaAtual = perguntasFemininas[IndexPergunta]
+    const variacao = perguntaAtual.respostas[numResposta].variacao
+
+    pontuacaoFeminina[variacao]++
+
+    IndexPergunta++
+
+    if (IndexPergunta < perguntasFemininas.length) {
+        mostrarPerguntaFem()
+		mostrarALternativasFem();
+	} else {
+        alert('socorro')
+	}
+
+}
+
+
+
+// button_iniciar = document.getElementById('quiz-button-start');
+// div_quiz = document.getElementById('quiz-main-container');
+// pergunta_quiz = document.getElementById('quiz-descricao');
+// titulo_quiz = document.getElementById('quiz-titulo');
+
+// const dataHoraMomento = () => {
+//     const date = new Date();
+//     const ano = date.getFullYear();
+//     const mes = String(date.getMonth() + 1).padStart(2, '0');
+//     const dia = String(date.getDate()).padStart(2, '0');
+//     const horas = String(date.getHours()).padStart(2, '0');
+//     const minutos = String(date.getMinutes()).padStart(2, '0');
+//     const segundos = String(date.getSeconds()).padStart(2, '0');
+
+//     const dataHoraFormatada = `${ano}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
+//     return dataHoraFormatada;
+// };
+
+// var idUsuarioQuiz = sessionStorage.ID_USUARIO;
+
+// const iniciarQuiz = (startTime, idUsuario) => {
+//     console.log('DATA DE INICIO: ', startTime);
+
+//     fetch('/quiz/inicio', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({
+//             dataHoraInicioServer: dataHoraInicio,
+//             idUsuarioServer: idUsuario,
+//         }),
+//     })
+//         .then((resposta) => {
+//             if (resposta.ok) {
+//                 console.log(resposta);
+
+//                 resposta.json().then((json) => {
+//                     console.log(json);
+//                     console.log(JSON.stringify(json));
+
+//                     sessionStorage.DATA_INICIO = json.dataHoraInicio;
+//                     sessionStorage.ID_USUARIO_INICIO = json.idUsuario;
+//                 });
+//             } else {
+//                 console.log('Houve um erro ao captar a data e hora de inicio!');
+//                 resposta.text().then((texto) => {
+//                     console.error(texto);
+//                 });
+//             }
+//         })
+//         .catch((erro) => {
+//             console.log(erro);
+//         });
+
+//     return false;
+// };
+
+// const finalizarQuiz = (dataHoraInicioFinal, dataHoraFinal, idUsuario, idVariaca0) => {
+//     console.log('DATA DE FINALIZACAO: ', dataHoraFinal);
+
+//     fetch('/quiz/final', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({
+//             dataHoraInicioFinalServer: dataHoraInicioFinal,
+//             dataHoraFinalServer: dataHoraFinal,
+//             idUsuarioServer: idUsuario,
+//             idVariaca0Server: idVariaca0,
+//         }),
+//     })
+//         .then((resposta) => {
+//             if (resposta.ok) {
+//                 console.log(resposta);
+
+//                 resposta.json().then((json) => {
+//                     console.log(json);
+//                     console.log(JSON.stringify(json));
+
+//                     sessionStorage.DATA_INICIO_FINAL = json.dataHoraInicioFinal;
+//                     sessionStorage.DATA_FINAL = json.dataHoraFinal;
+//                     sessionStorage.ID_USUARIO_FINAL = json.idUsuario;
+//                     sessionStorage.ID_VARIACAO = json.idResultado;
+//                 });
+//             } else {
+//                 console.log('Houve um erro ao captar a data e hora de finzalização!');
+//                 resposta.text().then((texto) => {
+//                     console.error(texto);
+//                 });
+//             }
+//         })
+//         .catch((erro) => {
+//             console.log(erro);
+//         });
+//     resultado();
+
+//     return false;
+// };
+
+// button_iniciar.addEventListener('click', () => {
+//     iniciarQuiz(dataHoraMomento(), idUsuarioQuiz);
+//     button_iniciar.style.display = 'none';
+//     pergunta_quiz.style.marginTop = '0.5%';
+//     pergunta_quiz.style.marginBottom = '3%';
+//     mostrarPergunta();
+// });
+
+// const mostrarPergunta = () => {
+
+//     if (!quizIniciado) {
+//         titulo_quiz.innerHTML = 'Escolha';
+//         pergunta_quiz.innerHTML = perguntaGenero.frase;
+
+//         div_quiz.innerHTML = `
+// 			<div class="perguntas-cima">
+// 				<div class="pergunta" onclick="selecionarGenero('masculino')">Masculinas</div>
+// 				<div class="pergunta" onclick="selecionarGenero('feminino')">Femininas</div>
+// 			</div>
+// 		`;
+//         return; // para aqui e espera o usuário clicar em uma opção
+//     }
+
+//     const pergunta = arrayPerguntas[indicePergunta];
+//     titulo_quiz.innerHTML = `${indicePergunta + 1}ª pergunta`;
+
+//     pergunta_quiz.innerHTML = pergunta.frase;
+
+//     div_quiz.innerHTML = `
+//   <div class="perguntas-cima">
+//     <div class="pergunta" onclick="responder(0)">	
+//       ${pergunta.respostas[0].alternativa}
+//     </div>
+//     <div class="pergunta" onclick="responder(1)">
+//     ${pergunta.respostas[1].alternativa}
+//     </div>
+//   </div>
+
+//   <div class="perguntas-baixo">
+//     <div class="pergunta" onclick="responder(2)">
+//     ${pergunta.respostas[2].alternativa}
+//     </div>
+//     <div class="pergunta" onclick="responder(3)">
+//     ${pergunta.respostas[3].alternativa}
+//     </div>
+//   </div>
+//   `;
+// };
+
+// const selecionarGenero = (genero) => {
+//     generoSelecionado = genero;
+//     arrayPerguntasAtual = genero == 'masculino' ? perguntasMasculinas : perguntasFemininas;
+//     quizIniciado = true;
+//     iniciarQuiz(dataHoraMomento(), idUsuarioQuiz);
+//     mostrarPergunta(); // chama a primeira pergunta real
+// };
+
+
+// const verificarResultado = () => {
+//     let personagem = '';
+//     let pontPersonagem = 0;
+
+//     for (let p in pontuacao) {
+//         if (pontuacao[p] > pontPersonagem) {
+//             pontPersonagem = pontuacao[p];
+//             personagem = p;
+//         }
+//     }
+
+//     return personagem;
+// };
+
+// const idPersonagem = () => {
+//     let nomeVariacao = verificarResultado();
+
+//     if (nomeVariaca0 == 'FadaAcucarada') return 0;
+//     else if (nomeVriacao == 'GisellePrimeiroAto') return 1;
+//     else if (nomeVariacao == 'GiselleSegundoAto') return 2;
+//     else if (nomeVariacao == 'Peasant') return 3;
+//     else if (nomeVariacao == 'Cupido') return 4;
+//     else if (nomeVariacao == 'Kitri') return 5;
+//     else if (nomeVariacao == 'Odile') return 6;
+//     else if (nomeVariacao == 'Aurora') return 7;
+//     else if (nomeVariacao == 'Esmeralda') return 8;
+//     else if (nomeVariacao == 'Paquita') return 9;
+//     else if (nomeVariacao == 'Raymonda') return 10;
+//     else if (nomeVariacao == 'Medora') return 11;
+//     else if (nomeVariacao == 'Gulnara') return 12;
+//     else if (nomeVariacao == 'NikiyaPrimeiroAto') return 13;
+//     else if (nomeVariacao == 'NikiyaSegundoAto') return 14;
+//     else if (nomeVariacao == 'OPássaroAzul') return 15;
+//     else if (nomeVariacao == 'Petrouchka') return 16;
+//     else if (nomeVariacao == 'Spartacus') return 17;
+//     else if (nomeVariacao == 'ChamasdeParis') return 18;
+//     else if (nomeVariacao == 'OTalismã') return 19;
+//     else if (nomeVariacao == 'Scherazade') return 20;
+//     else if (nomeVariacao == 'Solor') return 21;
+//     else if (nomeVariacao == 'Basilio') return 22;
+//     else if (nomeVariacao == 'PríncipeSiegfried') return 23;
+//     else if (nomeVariacao == 'PríncipeDésiré') return 24;
+//     else if (nomeVariacao == 'Albrecht') return 25;
+//     else if (nomeVariacao == 'JeandeBrienne') return 26;
+//     else if (nomeVariacao == 'Ali') return 27;
+//     else if (nomeVariacao == 'Acteon') return 28;
+//     else return 29;
+
+// };
+
+// const responder = (indiceOpcao) => {
+//     const personagem = arrayPerguntas[indicePergunta].respostas[indiceOpcao].personagem;
+//     pontuacao[personagem]++;
+
+//     indicePergunta++;
+
+//     if (indicePergunta < arrayPerguntas.length) {
+//         mostrarPergunta();
+//     } else {
+//         let dataHoraInicioFinal = sessionStorage.DATA_INICIO;
+//         let idPersonagemResultado = idPersonagem();
+//         finalizarQuiz(dataHoraInicioFinal, dataHoraMomento(), idUsuarioQuiz, idPersonagemResultado);
+//     }
+// };
+
+// const resultado = () => {
+//     pergunta_quiz.innerHTML = '';
+
+//     let personagemEscolhido = verificarResultado();
+
+//     mostrarResultado(personagemEscolhido);
+// };
+
+// const mostrarResultado = (personagemEscolhido) => {
+//     titulo_quiz.innerHTML = 'Resultado';
+//     if (pergunta_quiz) {
+//         pergunta_quiz.remove();
+//     }
+
+//     div_quiz.innerHTML = `
+//     <div class="quiz-page-resultado">
+//     <p>Seu personagem é: <span class="quiz-page-txt-yellow">${personagemEscolhido}</span></p>
+//     <img src="img/resultado/${personagemEscolhido}-resultado.gif" class="quiz-page-img-resultado" id="img-resultado">
+//     <p class="quiz-page-text-desc-resultado">Confira a descrição do personagem e dados sobre o quiz no seu <a href="perfil.html" class="quiz-final-link"><span class="quiz-page-txt-yellow">perfil</span></a>!</p>
+//     </div>
     
-  `;
+//   `;
 
-    const img_resultado = document.getElementById('img-resultado');
-    const quiz_container = document.getElementById('quiz-container');
+//     const img_resultado = document.getElementById('img-resultado');
+//     const quiz_container = document.getElementById('quiz-container');
 
-    switch (personagemEscolhido) {
-        default:
-            quiz_container.style.marginTop = '0';
-            break;
-    }
+//     switch (personagemEscolhido) {
+//         default:
+//             quiz_container.style.marginTop = '0';
+//             break;
+//     }
 
-    if (personagemEscolhido == 'Luffy' || personagemEscolhido == 'Brook') img_resultado.style.width = '100%';
-    else if (personagemEscolhido == 'Jinbe' || personagemEscolhido == 'Usopp') img_resultado.style.width = '90%';
-    else if (personagemEscolhido == 'Sanji') img_resultado.style.width = '80%';
-    else if (personagemEscolhido == 'Zoro' || personagemEscolhido == 'Robin') img_resultado.style.width = '70%';
-    else if (personagemEscolhido == 'Nami') img_resultado.style.width = '60%';
-    else img_resultado.style.width = '50%';
-};
+//     if (personagemEscolhido == 'Luffy' || personagemEscolhido == 'Brook') img_resultado.style.width = '100%';
+//     else if (personagemEscolhido == 'Jinbe' || personagemEscolhido == 'Usopp') img_resultado.style.width = '90%';
+//     else if (personagemEscolhido == 'Sanji') img_resultado.style.width = '80%';
+//     else if (personagemEscolhido == 'Zoro' || personagemEscolhido == 'Robin') img_resultado.style.width = '70%';
+//     else if (personagemEscolhido == 'Nami') img_resultado.style.width = '60%';
+//     else img_resultado.style.width = '50%';
+// };
 
-window.onload = () => {
-    if (sessionStorage.ID_PERSONAGEM != undefined) {
-        pergunta_quiz.innerHTML =
-            '<p>Você já realizou o quiz! Vá até o seu <a href="perfil.html" class="quiz-final-link"><span class="quiz-page-txt-yellow">perfil</span></a> e veja a descrição do seu personagem!</p>';
-        button_iniciar.style.display = 'none';
-    }
-};
+// window.onload = () => {
+//     if (sessionStorage.ID_PERSONAGEM != undefined) {
+//         pergunta_quiz.innerHTML =
+//             '<p>Você já realizou o quiz! Vá até o seu <a href="perfil.html" class="quiz-final-link"><span class="quiz-page-txt-yellow">perfil</span></a> e veja a descrição do seu personagem!</p>';
+//         button_iniciar.style.display = 'none';
+//     }
+// };

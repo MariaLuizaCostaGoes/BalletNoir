@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/quiz.css">
     <title>Quiz</title>
 </head>
 
@@ -19,23 +19,30 @@
             <a href="#">Sugestões</a>
         </nav>
     </header>
-    <div class="quiz-page-container" id="quiz-container">
-
+    <div class="divpai">
         <div class="titulo-container">
             <h2 class="titulo" id="quiz-titulo">Quiz Ballet</h2>
         </div>
+        <div class="quiz-page-container" id="quiz-container">
 
-        <p class="quiz-texto-descricao" id="quiz-descricao">
-            Já se perguntou qual Variação de ballet de repertório combina mais com você? <br>
-            Descubra já!
-        </p>
 
-        <div class="quiz-page-main-container" id="quiz-main-container"></div>
+            <p class="quiz-texto-descricao" id="quiz-descricao">
+                Já se perguntou qual Variação de ballet de repertório combina mais com você? <br>
+                Descubra já!
+            </p>
 
-        <div class="quiz-page-button-container">
-            <button class="quiz-button-start" id="quiz-button-start">Começar</button>
+            <div class="quiz-page-button-container">
+                <button onclick="trocarTelaFemininoMasculino()" class="quiz-button-start"
+                    id="startQuiz">Começar</button>
+            </div>
         </div>
     </div>
 </body>
+
+<script>
+    function trocarTelaFemininoMasculino() {
+        window.location.href = "quizFemininoMasculino.html"
+    }
+</script>
 
 </html>
