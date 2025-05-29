@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('assets/imgs/sua-imagem.jpg');
+    /* Altere para o caminho relativo correto */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.cadastro {
+    background-color: rgba(255, 192, 203, 0.15);
+    /* rosa claro com transparência */
+    backdrop-filter: blur(12px);
+    /* efeito fosco */
+    border-radius: 20px;
+    padding: 30px;
+    width: 360px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cadastro h2 {
+    text-align: center;
+    color: #e0668c;
+    font-size: 26px;
+    margin-bottom: 25px;
+}
+
+.cadastro label {
+    display: block;
+    margin: 12px 0 5px;
+    font-weight: bold;
+    color: #444;
+}
+
+.cadastro input[type="email"],
+.cadastro input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.cadastro input:focus {
+    border-color: #e0668c;
+}
+
+.cadastro button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #f7a9b8, #fddde6);
+    border: none;
+    border-radius: 30px;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+.cadastro button:hover {
+    background: linear-gradient(to right, #f98ca6, #fbcad9);
+}
+
+#div_aguardar {
+    display: none;
+    text-align: center;
+    margin-top: 15px;
+    color: #e0668c;
+}
+
+#div_erros_login {
+    display: none;
+    color: red;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.default-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.name-default-footer {
+    color: #e0668c;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.name-default-footer:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+    body.login-body {
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .default-footer {
+        position: static;
+        margin-top: 30px;
+        text-align: center;
+    }
+}

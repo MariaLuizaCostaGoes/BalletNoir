@@ -1,7 +1,8 @@
 body {
     margin: 0;
-        font-family: "Georgia", serif;
-    background-color: #ffd4dc; /* Ajustado para combinar */
+    font-family: "Georgia", serif;
+    background-color: #ffd4dc;
+    /* Ajustado para combinar */
     overflow-x: hidden;
     color: #333;
     min-height: 100vh;
@@ -65,8 +66,8 @@ nav a:hover::after,
 /* Conteúdo principal */
 
 
-.divpai{
-  text-align: center; 
+.divpai {
+    text-align: center;
 }
 
 .quiz-page-main-container {
@@ -128,4 +129,35 @@ nav a:hover::after,
     background-color: #f06e9b;
     color: white;
     transform: translateY(-2px);
+}
+
+.default-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.name-default-footer {
+    color: #e0668c;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.name-default-footer:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+    body.login-body {
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .default-footer {
+        position: static;
+        margin-top: 30px;
+        text-align: center;
+    }
 }
