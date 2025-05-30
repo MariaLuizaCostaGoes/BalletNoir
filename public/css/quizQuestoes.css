@@ -99,3 +99,7 @@ body {
         text-align: center;
     }
 }
+
+#descricao {
+    display: none;
+}

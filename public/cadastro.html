@@ -7,33 +7,29 @@
 
     <title>Cadastro | Ballet</title>
 
-    <script src="./js/cadastro.js"></script>
+    <script src="./js/cadastro.js" defer></script>
 
     <link rel="stylesheet" href="css/cadastro.css" />
 
 </head>
 
-<body>
+<body onload="listar()">
     <div class="cadastro">
         <h2>Bem-vindo!</h2>
         <form id="form_cadastro">
             <label for="email">Insira seu Email</label>
-            <input type="email" id="email" placeholder="Email" required>
+            <input type="email" id="ipt_email" placeholder="Email">
 
             <label for="nome">Insira seu nome</label>
-            <input type="text" id="nome" placeholder="Nome" required>
+            <input type="text" id="ipt_nome" placeholder="Nome">
 
             <label for="senha">Insira sua senha</label>
-            <input type="password" id="senha" placeholder="Senha" required>
+            <input type="password" id="ipt_senha" placeholder="Senha">
 
             <label for="confirmar-senha">Confirme sua senha</label>
-            <input type="password" id="confirmar-senha" placeholder="Confirmar senha" required>
+            <input type="password" id="ipt_confirmar-senha" placeholder="Confirmar senha">
 
-            <button type="submit">Cadastrar</button>
-
-            <div id="div_aguardar">
-                <p>Carregando...</p>
-            </div>
+            <button onclick="cadastrar()" type="submit">Cadastrar</button>
 
             <div id="div_erros_login"></div>
         </form>
@@ -42,8 +38,79 @@
         Feito por <a href="https://github.com/MariaLuizaCostaGoes" class="name-default-footer">Maria Luiza Costa
             Góes</a> - 1SIS2025 @ São Paulo Tech School
     </footer>
-
-    <script src="cadastro.js"></script>
 </body>
+
+<script>
+    let listaUsuariosCadastrados = [];
+
+    var email = ipt_email.value
+    var nome = ipt_nome.value
+    var senha = ipt_senha.value
+    var confirmarSenha = ipt_confirmar - senha.value
+
+    function cadastrar() {
+        if (email == '' || nome == '' || senha == '' || confirmarSenha == '') {
+            alert('Todos os campos devem ser preenchidos!');
+
+        } else if (nome.length < 3) {
+            alert('O nome deve ter pelo menos 3 caracteres!');
+
+        } else if (!email.includes('@') || !email.includes('.com')) {
+            alert('Email inválido!');
+
+        } else if (senha.length < 8) {
+            alert('Senha curta!<br> Pelo menos 8 caracteres!');
+
+        } else if (!validacaoSenha) {
+            alert('Senha fraca!<br> Insira pelo menos: 1 letra, 1 número e 1 caractere especial.');
+
+        } else if (!senhasIguais) {
+            alert('As senhas devem ser iguais!');
+
+        } else {
+            validarSessao();
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                idEmpresaVincularServer: idEmpresaVincular
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    cardErro.style.display = "block";
+
+                    mensagem_erro.innerHTML =
+                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000");
+
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+        return false;
+    }
+</script>
 
 </html>

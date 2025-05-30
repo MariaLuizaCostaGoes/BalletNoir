@@ -142,7 +142,7 @@ const perguntasMasculinas = [
             pergunta: 'O que melhor representa sua motivação?',
             respostas: [
                 { alternativa: 'Proteger quem amo, mesmo com risco', variacao: 'JeandeBrienne' },
-                { alternativa: 'Buscar liberdade e aventura', variacao: 'LeCorsaire' },
+                { alternativa: 'Buscar liberdade e aventura', variacao: 'OCorsario' },
                 { alternativa: 'Lutar contra o destino por amor', variacao: 'PríncipeSiegfried' },
                 { alternativa: 'Demonstrar lealdade com talento', variacao: 'Ali' },
             ],
@@ -161,7 +161,7 @@ const perguntasMasculinas = [
             respostas: [
                 { alternativa: 'Com heroísmo e bravura', variacao: 'JeandeBrienne' },
                 { alternativa: 'Com intensidade emocional', variacao: 'PríncipeSiegfried' },
-                { alternativa: 'Com astúcia e coragem pirata', variacao: 'LeCorsaire' },
+                { alternativa: 'Com astúcia e coragem pirata', variacao: 'OCorsario' },
                 { alternativa: 'Com virtuosismo e habilidade', variacao: 'Ali' },
             ],
         },
@@ -180,7 +180,7 @@ const perguntasMasculinas = [
                 { alternativa: 'Sua bravura em batalha', variacao: 'JeandeBrienne' },
                 { alternativa: 'Sua elegância e nobreza', variacao: 'PríncipeDésiré' },
                 { alternativa: 'Sua ousadia e astúcia', variacao: 'Basilio' },
-                { alternativa: 'Sua liberdade conquistada', variacao: 'LeCorsaire' },
+                { alternativa: 'Sua liberdade conquistada', variacao: 'OCorsario' },
             ],
         },
         {
@@ -214,7 +214,7 @@ const perguntasMasculinas = [
             pergunta: 'Se pudesse escolher um destino, seria...',
             respostas: [
                 { alternativa: 'A redenção após o erro', variacao: 'Albrecht' },
-                { alternativa: 'Uma jornada em alto-mar', variacao: 'LeCorsaire' },
+                { alternativa: 'Uma jornada em alto-mar', variacao: 'OCorsario' },
                 { alternativa: 'A vitória sobre um grande inimigo', variacao: 'Acteon' },
                 { alternativa: 'Um final de conto de fadas', variacao: 'PríncipeDésiré' },
             ],
@@ -254,7 +254,7 @@ const pontuacaoMasculina = {
     JeandeBrienne: 0,
     Ali: 0,
     Acteon: 0,
-    LeCorsaire: 0,
+    OCorsaire: 0,
     OPássaroAzul: 0,
 };
 
@@ -367,7 +367,16 @@ function finalizarQuizFem() {
        } 
     }
 
-    console.log(variacaoUsuarioFem)
+     var btnCima = document.getElementById('btnCima')
+     var btnBaixo = document.getElementById('btnBaixo')
+     var divDescricao = document.getElementById('descricao_txt')
+     var idVariacao = pegaridVariacao(variacaoUsuarioFem)
+     var descricao = pegarDescricaoVariacao(idVariacao)
+     btnCima.style.display = 'none'
+     btnBaixo.style.display = 'none'
+     perguntaElement.innerHTML = `Sua variação é: ${variacaoUsuarioFem}`
+     divDescricao.style.display = 'flex'
+     divDescricao.innerHTML = descricao
 }
 
 function finalizarQuizMasc() {
@@ -380,9 +389,65 @@ function finalizarQuizMasc() {
         }
     
     }
-    console.log(variacaoUsuarioMasc)
+     var btnCima = document.getElementById('btnCima')
+     var btnBaixo = document.getElementById('btnBaixo')
+     var divDescricao = document.getElementById('descricao_txt')
+     var idVariacao = pegaridVariacao(variacaoUsuarioMasc)
+     var descricao = pegarDescricaoVariacao(idVariacao)
+     btnCima.style.display = 'none'
+     btnBaixo.style.display = 'none'
+     perguntaElement.innerHTML = `Sua variação é: ${variacaoUsuarioMasc}`
+     divDescricao.style.display = 'flex'
+     divDescricao.innerHTML = descricao
+
 }
 
+function pegarDescricaoVariacao(idVariacao) {
+    fetch(`/usuarios/${idVariacao}`, {cache: 'no-store'}).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(resposta) {
+                return resposta[0]
+            })
+        }
+    })
+}
+
+function pegaridVariacao(nomeVariacao) {
+    if (nomeVariacao == 'FadaAcucarada') return 1;
+        else if (nomeVariacao == 'GisellePrimeiroAto') return 2;
+        else if (nomeVariacao == 'GiselleSegundoAto') return 3;
+        else if (nomeVariacao == 'Peasant') return 4;
+        else if (nomeVariacao == 'Cupido') return 5;
+        else if (nomeVariacao == 'Kitri') return 6;
+        else if (nomeVariacao == 'Odile') return 7;
+        else if (nomeVariacao == 'Aurora') return 8;
+        else if (nomeVariacao == 'Esmeralda') return 9;
+        else if (nomeVariacao == 'Paquita') return 10;
+        else if (nomeVariacao == 'Raymonda') return 11;
+        else if (nomeVariacao == 'Medora') return 12;
+        else if (nomeVariacao == 'Gulnara') return 13;
+        else if (nomeVariacao == 'NikiyaPrimeiroAto') return 14;
+        else if (nomeVariacao == 'NikiyaSegundoAto') return 15;
+        else if (nomeVariacao == 'OPássaroAzul') return 16;
+        else if (nomeVariacao == 'Petrouchka') return 17;
+        else if (nomeVariacao == 'Spartacus') return 18;
+        else if (nomeVariacao == 'ChamasdeParis') return 19;
+        else if (nomeVariacao == 'OTalismã') return 20;
+        else if (nomeVariacao == 'Scherazade') return 21;
+        else if (nomeVariacao == 'Solor') return 22;
+        else if (nomeVariacao == 'Basilio') return 23;
+        else if (nomeVariacao == 'PríncipeSiegfried') return 24;
+        else if (nomeVariacao == 'PríncipeDésiré') return 25;
+        else if (nomeVariacao == 'Albrecht') return 26;
+        else if (nomeVariacao == 'JeandeBrienne') return 27;
+        else if (nomeVariacao == 'Ali') return 28;
+        else if (nomeVariacao == 'Acteon') return 29;
+        else return 30;    
+}  
+
+function enviarDadosQuiz(idUsuario, idVariacao, tempodeconclusao) {
+    
+}
 
 // button_iniciar = document.getElementById('quiz-button-start');
 // div_quiz = document.getElementById('quiz-main-container');
@@ -557,41 +622,7 @@ function finalizarQuizMasc() {
 //     return personagem;
 // };
 
-// const idPersonagem = () => {
-//     let nomeVariacao = verificarResultado();
 
-//     if (nomeVariacao == 'FadaAcucarada') return 1;
-//     else if (nomeVriacao == 'GisellePrimeiroAto') return 2;
-//     else if (nomeVariacao == 'GiselleSegundoAto') return 3;
-//     else if (nomeVariacao == 'Peasant') return 4;
-//     else if (nomeVariacao == 'Cupido') return 5;
-//     else if (nomeVariacao == 'Kitri') return 6;
-//     else if (nomeVariacao == 'Odile') return 7;
-//     else if (nomeVariacao == 'Aurora') return 8;
-//     else if (nomeVariacao == 'Esmeralda') return 9;
-//     else if (nomeVariacao == 'Paquita') return 10;
-//     else if (nomeVariacao == 'Raymonda') return 11;
-//     else if (nomeVariacao == 'Medora') return 12;
-//     else if (nomeVariacao == 'Gulnara') return 13;
-//     else if (nomeVariacao == 'NikiyaPrimeiroAto') return 14;
-//     else if (nomeVariacao == 'NikiyaSegundoAto') return 15;
-//     else if (nomeVariacao == 'OPássaroAzul') return 16;
-//     else if (nomeVariacao == 'Petrouchka') return 17;
-//     else if (nomeVariacao == 'Spartacus') return 18;
-//     else if (nomeVariacao == 'ChamasdeParis') return 19;
-//     else if (nomeVariacao == 'OTalismã') return 20;
-//     else if (nomeVariacao == 'Scherazade') return 21;
-//     else if (nomeVariacao == 'Solor') return 22;
-//     else if (nomeVariacao == 'Basilio') return 23;
-//     else if (nomeVariacao == 'PríncipeSiegfried') return 24;
-//     else if (nomeVariacao == 'PríncipeDésiré') return 25;
-//     else if (nomeVariacao == 'Albrecht') return 26;
-//     else if (nomeVariacao == 'JeandeBrienne') return 27;
-//     else if (nomeVariacao == 'Ali') return 28;
-//     else if (nomeVariacao == 'Acteon') return 29;
-//     else return 30;
-
-// };
 
 // const responder = (indiceOpcao) => {
 //     const personagem = arrayPerguntas[indicePergunta].respostas[indiceOpcao].personagem;
