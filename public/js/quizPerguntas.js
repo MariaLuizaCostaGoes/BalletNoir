@@ -266,31 +266,34 @@ const nextButtons = document.getElementById("next-btn");
 // ver qual questão é a atual
 let IndexPergunta = 0
 
+function startQuizFem() {
+    IndexPergunta = 0
+    mostrarPerguntaFem();
+
+}
+
 function startQuizMasc() {
     IndexPergunta = 0
     mostrarPerguntaMasc();
 
 }
 
-function startQuizFem() {
-    IndexPergunta = 0
-    mostrarPerguntaFem();
-
-}
 let currentQuestionMasc = '';
 let currentQuestionFem = '';
 
-function mostrarPerguntaMasc() {
-    currentQuestionMasc = perguntasFemininas[IndexPergunta].pergunta
-    console.log(currentQuestionMasc)
-    perguntaElement.innerHTML = currentQuestionMasc
-    mostrarALternativasMasc()
-}
+
 function mostrarPerguntaFem() {
     currentQuestionFem = perguntasFemininas[IndexPergunta].pergunta
     console.log(currentQuestionFem)
     perguntaElement.innerHTML = currentQuestionFem
     mostrarALternativasFem()
+}
+
+function mostrarPerguntaMasc() {
+    currentQuestionMasc = perguntasMasculinas[IndexPergunta].pergunta
+    console.log(currentQuestionMasc)
+    perguntaElement.innerHTML = currentQuestionMasc
+    mostrarALternativasMasc()
 }
 
 function mostrarALternativasFem() {
@@ -332,28 +335,53 @@ function respostaFem(numResposta) {
         mostrarPerguntaFem()
 		mostrarALternativasFem();
 	} else {
-        alert('socorro')
+        finalizarQuizFem()
 	}
 }
 
-function respostaFem(numResposta) {
+function respostaMasc(numResposta) {
     console.log('número da resposta: ', numResposta)
-    const perguntaAtual = perguntasFemininas[IndexPergunta]
+    const perguntaAtual = perguntasMasculinas[IndexPergunta]
     const variacao = perguntaAtual.respostas[numResposta].variacao
 
-    pontuacaoFeminina[variacao]++
+    pontuacaoMasculina[variacao]++
 
     IndexPergunta++
 
-    if (IndexPergunta < perguntasFemininas.length) {
-        mostrarPerguntaFem()
-		mostrarALternativasFem();
+    if (IndexPergunta < perguntasMasculinas.length) {
+        mostrarPerguntaMasc()
+		mostrarALternativasMasc();
 	} else {
-        alert('socorro')
+        finalizarQuizMasc()
 	}
 
 }
 
+function finalizarQuizFem() {
+    var variacaoUsuarioFem = ''
+    var pontuacaoVariacaoFem = 0
+    for (var variacaonome in pontuacaoFeminina) {
+       if (pontuacaoFeminina[variacaonome] > pontuacaoVariacaoFem) {
+            variacaoUsuarioFem = variacaonome
+            pontuacaoVariacaoFem = pontuacaoFeminina[variacaonome]
+       } 
+    }
+
+    console.log(variacaoUsuarioFem)
+}
+
+function finalizarQuizMasc() {
+    var variacaoUsuarioMasc = ''
+    var pontuacaoVariacaoMasc = 0
+    for (var variacaonome in pontuacaoMasculina) {
+        if (pontuacaoMasculina[variacaonome] > pontuacaoVariacaoMasc) {
+            variacaoUsuarioMasc = variacaonome
+            pontuacaoVariacaoMasc = pontuacaoMasculina[variacaonome]
+        }
+    
+    }
+    console.log(variacaoUsuarioMasc)
+}
 
 
 // button_iniciar = document.getElementById('quiz-button-start');
@@ -382,7 +410,7 @@ function respostaFem(numResposta) {
 //     fetch('/quiz/inicio', {
 //         method: 'POST',
 //         headers: {
-//             'Content-Type': 'application/json',
+//             'Content-Type': 'applica                             tion/json',
 //         },
 //         body: JSON.stringify({
 //             dataHoraInicioServer: dataHoraInicio,
@@ -532,36 +560,36 @@ function respostaFem(numResposta) {
 // const idPersonagem = () => {
 //     let nomeVariacao = verificarResultado();
 
-//     if (nomeVariaca0 == 'FadaAcucarada') return 0;
-//     else if (nomeVriacao == 'GisellePrimeiroAto') return 1;
-//     else if (nomeVariacao == 'GiselleSegundoAto') return 2;
-//     else if (nomeVariacao == 'Peasant') return 3;
-//     else if (nomeVariacao == 'Cupido') return 4;
-//     else if (nomeVariacao == 'Kitri') return 5;
-//     else if (nomeVariacao == 'Odile') return 6;
-//     else if (nomeVariacao == 'Aurora') return 7;
-//     else if (nomeVariacao == 'Esmeralda') return 8;
-//     else if (nomeVariacao == 'Paquita') return 9;
-//     else if (nomeVariacao == 'Raymonda') return 10;
-//     else if (nomeVariacao == 'Medora') return 11;
-//     else if (nomeVariacao == 'Gulnara') return 12;
-//     else if (nomeVariacao == 'NikiyaPrimeiroAto') return 13;
-//     else if (nomeVariacao == 'NikiyaSegundoAto') return 14;
-//     else if (nomeVariacao == 'OPássaroAzul') return 15;
-//     else if (nomeVariacao == 'Petrouchka') return 16;
-//     else if (nomeVariacao == 'Spartacus') return 17;
-//     else if (nomeVariacao == 'ChamasdeParis') return 18;
-//     else if (nomeVariacao == 'OTalismã') return 19;
-//     else if (nomeVariacao == 'Scherazade') return 20;
-//     else if (nomeVariacao == 'Solor') return 21;
-//     else if (nomeVariacao == 'Basilio') return 22;
-//     else if (nomeVariacao == 'PríncipeSiegfried') return 23;
-//     else if (nomeVariacao == 'PríncipeDésiré') return 24;
-//     else if (nomeVariacao == 'Albrecht') return 25;
-//     else if (nomeVariacao == 'JeandeBrienne') return 26;
-//     else if (nomeVariacao == 'Ali') return 27;
-//     else if (nomeVariacao == 'Acteon') return 28;
-//     else return 29;
+//     if (nomeVariacao == 'FadaAcucarada') return 1;
+//     else if (nomeVriacao == 'GisellePrimeiroAto') return 2;
+//     else if (nomeVariacao == 'GiselleSegundoAto') return 3;
+//     else if (nomeVariacao == 'Peasant') return 4;
+//     else if (nomeVariacao == 'Cupido') return 5;
+//     else if (nomeVariacao == 'Kitri') return 6;
+//     else if (nomeVariacao == 'Odile') return 7;
+//     else if (nomeVariacao == 'Aurora') return 8;
+//     else if (nomeVariacao == 'Esmeralda') return 9;
+//     else if (nomeVariacao == 'Paquita') return 10;
+//     else if (nomeVariacao == 'Raymonda') return 11;
+//     else if (nomeVariacao == 'Medora') return 12;
+//     else if (nomeVariacao == 'Gulnara') return 13;
+//     else if (nomeVariacao == 'NikiyaPrimeiroAto') return 14;
+//     else if (nomeVariacao == 'NikiyaSegundoAto') return 15;
+//     else if (nomeVariacao == 'OPássaroAzul') return 16;
+//     else if (nomeVariacao == 'Petrouchka') return 17;
+//     else if (nomeVariacao == 'Spartacus') return 18;
+//     else if (nomeVariacao == 'ChamasdeParis') return 19;
+//     else if (nomeVariacao == 'OTalismã') return 20;
+//     else if (nomeVariacao == 'Scherazade') return 21;
+//     else if (nomeVariacao == 'Solor') return 22;
+//     else if (nomeVariacao == 'Basilio') return 23;
+//     else if (nomeVariacao == 'PríncipeSiegfried') return 24;
+//     else if (nomeVariacao == 'PríncipeDésiré') return 25;
+//     else if (nomeVariacao == 'Albrecht') return 26;
+//     else if (nomeVariacao == 'JeandeBrienne') return 27;
+//     else if (nomeVariacao == 'Ali') return 28;
+//     else if (nomeVariacao == 'Acteon') return 29;
+//     else return 30;
 
 // };
 

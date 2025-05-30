@@ -9,18 +9,18 @@
     <script src="js/quizPerguntas.js" defer></script>
 </head>
 
-<body>
+<body onload="startQuizMasc()">
     <div class="QuizdePersonalidade">
         <div class="quiz">
             <h2 id="pergunta">Questao</h2>
             <div id="resposta-buttons">
                 <div class="btncima">
-                    <button onclick="resposta(0)" class="btn" id="btn-1"></button>
-                    <button onclick="resposta(1)" class="btn" id="btn-2"></button>
+                    <button onclick="respostaMasc(0)" class="btn" id="btn-1"></button>
+                    <button onclick="respostaMasc(1)" class="btn" id="btn-2"></button>
                 </div>
                 <div class="btnbaixo">
-                    <button onclick="resposta(2)" class="btn" id="btn-3"></button>
-                    <button onclick="resposta(3)" class="btn" id="btn-4"></button>
+                    <button onclick="respostaMasc(2)" class="btn" id="btn-3"></button>
+                    <button onclick="respostaMasc(3)" class="btn" id="btn-4"></button>
                 </div>
             </div>
             <footer class="default-footer">
