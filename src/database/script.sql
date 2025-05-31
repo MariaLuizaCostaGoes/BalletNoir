@@ -3,29 +3,42 @@ USE ballet;
 
 CREATE TABLE IF NOT EXISTS usuario (
 	idUsuario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-	nome VARCHAR(45),
-	email VARCHAR(45),
-	senha VARCHAR(45)
-);
-
-CREATE TABLE IF NOT EXISTS resultado (
-	idResultado INT PRIMARY KEY NOT NULL,
-	nomeVariacao VARCHAR(45) NOT NULL,
-    nomeBalletdeRepertorio VARCHAR(45) NOT NULL,
-	descricaoVariacao VARCHAR(1000) NOT NULL
+	nome VARCHAR(45) NOT NULL,
+	email VARCHAR(45) NOT NULL,
+	senha VARCHAR(45) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS quiz (
-	idQuiz INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	fkResultado INT,
-    fkUsuario INT,
+	idQuiz INT PRIMARY KEY AUTO_INCREMENT,
 	startTime DATETIME,
-	endTime DATETIME,
-	FOREIGN KEY (fkResultado) REFERENCES resultado(idResultado),
-	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
+	endTime DATETIME
 );
 
-INSERT INTO resultado (idResultado, nomeVariacao, nomeBalletdeRepertorio, descricaoVariacao) VALUES
+CREATE TABLE IF NOT EXISTS variacao (
+	idVariacao INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nomeVariacao VARCHAR(45) NOT NULL,
+    nomeBalletDeRepertorio VARCHAR(45) NOT NULL,
+    descricaoVariacao VARCHAR(1000) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS resultado (
+    idResultado INT AUTO_INCREMENT,
+    fkQuiz INT,
+    fkUsuario INT,
+    fkVariacao INT,
+    nomeVariacao VARCHAR(45),
+    nomeBalletdeRepertorio VARCHAR(45),
+    descricaoVariacao VARCHAR(1000),
+    PRIMARY KEY (idResultado , fkQuiz , fkUsuario , fkVariacao),
+    FOREIGN KEY (fkQuiz)
+        REFERENCES quiz(idQuiz),
+    FOREIGN KEY (fkUsuario)
+        REFERENCES usuario (idUsuario),
+    FOREIGN KEY (fkVariacao)
+        REFERENCES variacao (idVariacao)
+);
+
+INSERT INTO variacao (idVariacao, nomeVariacao, nomeBalletDeRepertorio, descricaoVariacao) VALUES
 (1, 'Fada Açucarada', 'O Quebra-Nozes', 'A variação da Fada Açucarada é uma das danças mais icônicas do balé clássico, pertencente ao segundo ato do famoso balé O Quebra-Nozes, de Piotr Ilitch Tchaikovsky. Essa variação é conhecida por sua leveza e delicadeza, representando a magia do Reino dos Doces. A coreografia exige técnica refinada, com movimentos graciosos e saltos suaves, transmitindo a sensação de flutuar.'),
 (2, 'Giselle Primeiro Ato', 'Giselle', 'A variação de Giselle é uma das mais emocionantes do balé clássico, pertencente ao primeiro ato do balé Giselle, criado em 1841 por Adolphe Adam, com libreto de Jules-Henri Vernoy de Saint-Georges e Théophile Gautier. Essa variação é interpretada pela protagonista, Giselle, uma jovem camponesa apaixonada por Albrecht, um nobre disfarçado de plebeu. A dança reflete sua alegria e inocência antes de descobrir a traição de Albrecht. A coreografia exige leveza, rapidez e grande controle técnico, com movimentos que expressam felicidade e entusiasmo.'),
 (3, 'Giselle Segundo Ato', 'Giselle', 'O segundo ato de Giselle é um dos momentos mais icônicos do balé romântico. Após a morte de Giselle no primeiro ato, ela retorna como um espírito, tornando-se uma das Wilis, fantasmas de jovens que morreram antes do casamento. Essas entidades sobrenaturais têm o poder de forçar os homens a dançarem até a morte. Sua dança se torna etérea e melancólica, contrastando com a vivacidade do primeiro ato. Essa variação é um verdadeiro teste para bailarinas, pois exige não apenas técnica impecável, mas também uma interpretação emocional profunda.'),
@@ -54,4 +67,5 @@ INSERT INTO resultado (idResultado, nomeVariacao, nomeBalletdeRepertorio, descri
 (26, 'Albrecht', 'Giselle', 'A variação de Albrecht no segundo ato é dramática e cheia de emoção, com saltos que expressam seu arrependimento e desespero. Albrecht, arrependido por enganar Giselle, é condenado pelas Willis a dançar até a morte. Giselle, mesmo traída, o protege e impede sua destruição.'),
 (27, 'Jean de Brienne', 'Raymonda', 'A variação de Jean de Brienne é heroica e elegante, com movimentos que demonstram sua bravura e amor por Raymonda. Jean de Brienne retorna das Cruzadas e luta contra o cavaleiro sarraceno Abderakhman para salvar Raymonda e finalmente se casar com ela.'),
 (28, 'Ali', 'Le Corsaire', 'A variação de Ali é uma das mais famosas do ballet clássico, com saltos espetaculares e giros rápidos que demonstram sua destreza. Ali, o escravo, exibe sua lealdade e destreza ao dançar para Medora e Conrad, mostrando sua habilidade e poder.'),
-(29, 'Acteon', 'Diana e Acteon', 'A variação de Acteon é cheia de energia e técnica, com saltos altos e giros rápidos que representam sua força como caçador. Acteon, um caçador, vê Diana e suas ninfas se banhando. Como punição, Diana o transforma em um cervo, e ele é perseguido e morto por seus próprios cães.');
+(29, 'Acteon', 'Diana e Acteon', 'A variação de Acteon é cheia de energia e técnica, com saltos altos e giros rápidos que representam sua força como caçador. Acteon, um caçador, vê Diana e suas ninfas se banhando. Como punição, Diana o transforma em um cervo, e ele é perseguido e morto por seus próprios cães.'),
+(30, 'OCorsarie', 'Le Corsaire', 'A variação masculina no balé "O Corsário" é uma peça coreográfica individual que destaca a habilidade e a força dos bailarinos masculinos. É uma parte essencial da apresentação, mostrando a destreza e o virtuosismo do bailarino, geralmente associada ao personagem Conrad, o herói da história.');

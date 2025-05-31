@@ -9,7 +9,7 @@ router.post("/cadastrar", function (req, res) {
 })
 
 router.get("/pegarDescricao/:idVariacao", function (req, res) {
-    usuarioController.pegarDescricao(req, res)
+    usuarioController.pegarDescricao(req, res);
 
 })
 

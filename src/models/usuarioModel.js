@@ -28,8 +28,15 @@ function pegarDescricao(idVariacao) {
     return database.executar(instrucaoSql);
 }
 
+function enviarDadosQuiz(fkVariacao, fkUsuario) {
+    var instrucaoSQL = `insert into resultado (fkVariacao, fkUsuario) values (${fkVariacao}, ${fkUsuario});`
+    console.log("Executando a instrução SQL: \n" + instrucaoSQL);
+    return database.executar(instrucaoSQL);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    pegarDescricao
+    pegarDescricao,
+    enviarDadosQuiz
 };

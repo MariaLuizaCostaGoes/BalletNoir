@@ -94,11 +94,19 @@ function pegarDescricao(req, res) {
 }
 
 function enviarDadosQuiz(req, res) {
+    var fkVariacao = req.body.fkVariacaoServer
+    var fkUsuario = req.body.fkUsuarioServer
+    usuarioModel.enviarDadosQuiz(fkVariacao, fkUsuario).then(function(resultado){
+        res.status(200).send({fkVariacao:fkVariacao, fkUsuario:fkUsuario})
+    }).catch(function(erro){
+        res.status(500).json(erro.sqlMessage)
+    })
 
 }
 
 module.exports = {
     autenticar,
     cadastrar,
-    pegarDescricao
+    pegarDescricao,
+    enviarDadosQuiz
 }
