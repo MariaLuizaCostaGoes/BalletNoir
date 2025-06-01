@@ -59,93 +59,64 @@
 <script>
     let listaUsuariosCadastrados = [];
 
-    var nomeVar = ipt_nome.value;
-    var emailVar = ipt_email.value;
-    var senhaVar = ipt_senha.value;
-    var confirmarSenhaVar = ipt_confirmar_senha.value;
-    var cardErro = document.getElementById("div_erros_login");
-    var mensagem_erro = cardErro;
 
     function cadastrar() {
+        var validacaoSenha = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).+$/.test(senhaVar);
+        var nomeVar = ipt_nome.value;
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+        var confirmarSenhaVar = ipt_confirmar_senha.value;
+        var cardErro = document.getElementById("div_erros_login");
+        var mensagem_erro = cardErro;
 
-        // Validação: campos em branco
         if (
             nomeVar == "" ||
             emailVar == "" ||
             senhaVar == "" ||
-            confirmacaoSenhaVar == ""
+            confirmarSenhaVar == ""
         ) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = "Todos os campos devem ser preenchidos!";
-            finalizarAguardar();
-            return false;
-        } else {
-            setInterval(sumirMensagem, 5000);
-        }
 
-        
-        // Validação: email
-        if (!emailVar.includes("@") || !emailVar.includes(".com")) {
+
+        } else if (!emailVar.includes("@") || !emailVar.includes(".com")) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = "Email inválido!";
-            finalizarAguardar();
-            return false;
-        } else {
-            setInterval(sumirMensagem, 5000);
-        }
-        
-        // Validação: nome com menos de 3 caracteres
-        if (nomeVar.length < 3) {
+
+
+        } else if (nomeVar.length < 3) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = "O nome deve ter pelo menos 3 caracteres!";
-            finalizarAguardar();
-            return false;
-        } else {
-            setInterval(sumirMensagem, 5000);
-        }
 
-        // Validação: senha com menos de 8 caracteres
-        if (senhaVar.length < 8) {
+
+        } else if (senhaVar.length < 8) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = "Senha curta! Pelo menos 8 caracteres!";
-            finalizarAguardar();
-            return false;
-        } else {
-            setInterval(sumirMensagem, 5000);
-        }
 
-        // Validação: senha fraca (sem letra, número e caractere especial)
-        var validacaoSenha = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).+$/.test(senhaVar);
-        if (!validacaoSenha) {
+
+        } else if (!validacaoSenha) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML =
                 "Senha fraca! Insira pelo menos: 1 letra, 1 número e 1 caractere especial.";
-            finalizarAguardar();
-            return false;
-        }
 
-        // Validação: senhas diferentes
-        if (senhaVar !== confirmacaoSenhaVar) {
+
+        } else if (senhaVar !== confirmarSenhaVar) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML = "As senhas devem ser iguais!";
-            finalizarAguardar();
-            return false;
-        } else {
-            setInterval(sumirMensagem, 5000);
-        }
 
-        // Enviando o valor da input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            }),
-        }).then(function (resposta) {
+
+        } else {
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                }),
+            }).then(function (resposta) {
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
@@ -157,19 +128,20 @@
                     setTimeout(() => {
                         window.location = "login.html";
                     }, "2000");
-
-                    limparFormulario();
-                    finalizarAguardar();
+                    
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
                 }
             })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                finalizarAguardar();
-            });
-        return false;
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    
+                });
+    
+        }
     }
+
+
 </script>
 
 </html>
