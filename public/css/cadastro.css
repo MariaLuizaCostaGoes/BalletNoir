@@ -1,8 +1,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('assets/imgs/sua-imagem.jpg');
-    /* Altere para o caminho relativo correto */
+    background-image: url('./img/imgLoginCadastro.png');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -14,9 +13,7 @@ body {
 
 .cadastro {
     background-color: rgba(255, 192, 203, 0.15);
-    /* rosa claro com transparência */
     backdrop-filter: blur(12px);
-    /* efeito fosco */
     border-radius: 20px;
     padding: 30px;
     width: 360px;
@@ -30,15 +27,19 @@ body {
     margin-bottom: 25px;
 }
 
-.cadastro label {
-    display: block;
-    margin: 12px 0 5px;
+.campo {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.campo span {
+    margin-bottom: 5px;
     font-weight: bold;
     color: #444;
 }
 
-.cadastro input[type="email"],
-.cadastro input[type="password"] {
+.campo input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
@@ -48,26 +49,47 @@ body {
     transition: border-color 0.2s ease;
 }
 
-.cadastro input:focus {
+.campo input:focus {
     border-color: #e0668c;
 }
 
-.cadastro button {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(to right, #f7a9b8, #fddde6);
-    border: none;
-    border-radius: 30px;
-    color: #000;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background 0.3s ease;
+.cadastro-link-text {
+    display: block;
+    margin: 10px auto 0;
+    color: #e0668c;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
 }
 
-.cadastro button:hover {
-    background: linear-gradient(to right, #f98ca6, #fbcad9);
+
+.cadastro-link-text:hover {
+    color: #c85674;
+}
+
+.cadastro button,
+.botao {
+    width: 100%;
+    padding: 12px;
+    background-color: #e0668c;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.cadastro button:hover,
+.botao:hover {
+    background-color: #d0557d;
+}
+
+.cadastro button:active,
+.botao:active {
+    transform: scale(0.98);
 }
 
 #div_aguardar {

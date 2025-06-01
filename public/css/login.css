@@ -1,98 +1,108 @@
-* {
-    box-sizing: border-box;
-}
-
-body.login-body {
+body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('assets/imgs/ballet-bg.jpg');
-    /* Altere para seu caminho */
+    background-image: url('./img/imgLoginCadastro.png');
     background-size: cover;
     background-position: center;
     height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    padding-right: 5%;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 5%;
 }
 
-.login-container {
-    background-color: rgba(255, 240, 245, 0.2);
-    backdrop-filter: blur(10px);
-    padding: 40px 30px;
+.login {
+    background-color: rgba(255, 192, 203, 0.15);
+    backdrop-filter: blur(12px);
     border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    width: 350px;
+    padding: 30px;
+    width: 360px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.login h2 {
     text-align: center;
-}
-
-.login-msg {
-    font-size: 26px;
     color: #e0668c;
-    margin-bottom: 20px;
-    font-weight: 600;
+    font-size: 26px;
+    margin-bottom: 25px;
 }
 
-.login-label {
-    display: block;
-    text-align: left;
-    margin: 10px 0 5px;
+.campo {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.campo span {
+    margin-bottom: 5px;
     font-weight: bold;
     color: #444;
 }
 
-.login-input {
+.campo input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     border-radius: 10px;
     font-size: 14px;
     outline: none;
-    transition: border-color 0.3s;
+    transition: border-color 0.2s ease;
 }
 
-.login-input:focus {
+.campo input:focus {
     border-color: #e0668c;
 }
 
 .login-link-text {
-    display: inline-block;
-    margin-top: 15px;
+    display: block;
+    margin: 10px auto 0;
     color: #e0668c;
     font-size: 14px;
     text-decoration: none;
+    text-align: center;
 }
 
 .login-link-text:hover {
     color: #c85674;
 }
 
-.login-button-confirm {
+.login button,
+.botao {
     width: 100%;
     padding: 12px;
-    margin-top: 20px;
-    background: linear-gradient(to right, #f7a9b8, #fddde6);
+    background-color: #e0668c;
+    color: white;
     border: none;
-    border-radius: 30px;
-    font-weight: bold;
+    border-radius: 12px;
     font-size: 16px;
-    color: #000;
+    font-weight: 500;
     cursor: pointer;
-    transition: background 0.3s ease;
+    margin-top: 20px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.login-button-confirm:hover {
-    background: linear-gradient(to right, #f98ca6, #fbcad9);
+.login button:hover,
+.botao:hover {
+    background-color: #d0557d;
 }
 
-.containerErro {
-    margin-top: 15px;
+.login button:active,
+.botao:active {
+    transform: scale(0.98);
+}
+
+#div_aguardar {
     display: none;
+    text-align: center;
+    margin-top: 15px;
+    color: #e0668c;
 }
 
-.msgErro {
+#div_erros_login {
+    display: none;
     color: red;
+    text-align: center;
+    margin-top: 15px;
     font-size: 14px;
 }
 

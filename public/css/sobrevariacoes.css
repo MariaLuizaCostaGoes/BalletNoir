@@ -13,6 +13,7 @@ body {
     align-items: center;
     position: fixed;
     width: 100%;
+    z-index: 1000;
 }
 
 nav {
@@ -64,6 +65,21 @@ nav a::after {
 nav a:hover::after {
     display: block;
 }
+
+.imgTopoSobreVariacoes {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 0;
+}
+
+.imgTopoSobreVariacoes img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 
 .balletDeRepertorio {
     background-color: #fff0f5;

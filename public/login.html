@@ -9,24 +9,29 @@
 </head>
 
 <body class="login-body">
-  <div class="login-container">
-    <h2 class="login-msg">Bem-vindo de volta <br> aos palcos!</h2>
+  <div class="login">
+    <h2>Bem-vindo de volta <br> aos palcos!</h2>
+    <div class="formulario">
 
-    <label for="id-login-input-email" class="login-label">Email</label>
-    <input type="email" class="login-input" id="id-login-input-email" placeholder="seuemail@exemplo.com" />
+      <div class="campo">
+        <span>E-mail:</span>
+        <input id="ipt_email" type="email" placeholder="Email" />
+      </div>
 
-    <label for="id-login-input-password" class="login-label">Senha</label>
-    <input type="password" class="login-input" id="id-login-input-password" placeholder="*******" />
+      <div class="campo">
+        <span>Senha:</span>
+        <input id="ipt_senha" type="password" placeholder="Senha" />
+      </div>
 
-    <a href="cadastro.html" class="login-link-text">Ainda não tenho cadastro</a>
+      <a href="cadastro.html" class="login-link-text">Ainda não tenho cadastro</a>
 
-    <button class="login-button-confirm" id="login-button">Entrar no palco</button>
+      <button class="botao" onclick="entrar()">Entrar</button>
 
-    <div class="containerErro">
-      <span class="msgErro" id="msgErro"></span>
+      <div class="containerErro">
+        <span class="msgErro" id="msgErro"></span>
+      </div>
     </div>
   </div>
-
   <footer class="default-footer">
     Feito por <a href="https://github.com/MariaLuizaCostaGoes" class="name-default-footer">Maria Luiza Costa Góes</a> -
     1SIS2025 @ São Paulo Tech School
@@ -34,7 +39,75 @@
 
   <script src="js/cadastro.js"></script>
 </body>
+
 </html>
 <script>
+  function entrar() {
+    aguardar();
+
+    var emailVar = ipt_email.value;
+    var senhaVar = ipt_senha.value;
+
+    if (emailVar == "" || senhaVar == "") {
+      cardErro.style.display = "block"
+      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+      finalizarAguardar();
+      return false;
+    }
+    else {
+      setInterval(sumirMensagem, 5000)
+    }
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar
+      })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          sessionStorage.EMAIL_USUARIO = json.email;
+          sessionStorage.NOME_USUARIO = json.nome;
+          sessionStorage.ID_USUARIO = json.id;
+
+          setTimeout(function () {
+            window.location = "./inicio.html";
+          }, 1000); // apenas para exibir o loading
+
+        });
+
+      } else {
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+          finalizarAguardar(texto);
+        });
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none"
+  }
 
 </script>

@@ -15,24 +15,40 @@
 
 <body onload="listar()">
     <div class="cadastro">
-        <h2>Bem-vindo!</h2>
-        <form id="form_cadastro">
-            <label for="email">Insira seu Email</label>
-            <input type="email" id="ipt_email" placeholder="Email">
+        <h2>Bem-vindo aos palcos!</h2>
+        <div class="formulario">
 
-            <label for="nome">Insira seu nome</label>
-            <input type="text" id="ipt_nome" placeholder="Nome">
+            <div class="campo">
+                <span>Nome:</span>
+                <input id="ipt_nome" type="text" placeholder="Nome" />
+            </div>
 
-            <label for="senha">Insira sua senha</label>
-            <input type="password" id="ipt_senha" placeholder="Senha">
+            <div class="campo">
+                <span>E-mail:</span>
+                <input id="ipt_email" type="email" placeholder="Email" />
+            </div>
 
-            <label for="confirmar-senha">Confirme sua senha</label>
-            <input type="password" id="ipt_confirmar-senha" placeholder="Confirmar senha">
+            <div class="campo">
+                <span>Senha:</span>
+                <input id="ipt_senha" type="password" placeholder="Senha" />
+            </div>
 
-            <button onclick="cadastrar()" type="submit">Cadastrar</button>
+            <div class="campo">
+                <span>Confirmação da Senha:</span>
+                <input id="ipt_confirmar_senha" type="password" placeholder="Confirmar senha" />
+            </div>
+
+            <a href="login.html" class="cadastro-link-text">Já tenho cadastro</a>
+
+            <button class="botao" onclick="cadastrar()" type="submit">Cadastrar</button>
+
+            <div id="div_aguardar" class="loading-div">
+                <img src="./assets/circle-loading.gif" id="loading-gif" />
+            </div>
 
             <div id="div_erros_login"></div>
-        </form>
+
+        </div>
     </div>
     <footer class="default-footer">
         Feito por <a href="https://github.com/MariaLuizaCostaGoes" class="name-default-footer">Maria Luiza Costa
@@ -43,50 +59,93 @@
 <script>
     let listaUsuariosCadastrados = [];
 
-    var email = ipt_email.value
-    var nome = ipt_nome.value
-    var senha = ipt_senha.value
-    var confirmarSenha = ipt_confirmar - senha.value
+    var nomeVar = ipt_nome.value;
+    var emailVar = ipt_email.value;
+    var senhaVar = ipt_senha.value;
+    var confirmarSenhaVar = ipt_confirmar_senha.value;
+    var cardErro = document.getElementById("div_erros_login");
+    var mensagem_erro = cardErro;
 
     function cadastrar() {
-        if (email == '' || nome == '' || senha == '' || confirmarSenha == '') {
-            alert('Todos os campos devem ser preenchidos!');
 
-        } else if (nome.length < 3) {
-            alert('O nome deve ter pelo menos 3 caracteres!');
-
-        } else if (!email.includes('@') || !email.includes('.com')) {
-            alert('Email inválido!');
-
-        } else if (senha.length < 8) {
-            alert('Senha curta!<br> Pelo menos 8 caracteres!');
-
-        } else if (!validacaoSenha) {
-            alert('Senha fraca!<br> Insira pelo menos: 1 letra, 1 número e 1 caractere especial.');
-
-        } else if (!senhasIguais) {
-            alert('As senhas devem ser iguais!');
-
+        // Validação: campos em branco
+        if (
+            nomeVar == "" ||
+            emailVar == "" ||
+            senhaVar == "" ||
+            confirmacaoSenhaVar == ""
+        ) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "Todos os campos devem ser preenchidos!";
+            finalizarAguardar();
+            return false;
         } else {
-            validarSessao();
+            setInterval(sumirMensagem, 5000);
         }
 
-        // Enviando o valor da nova input
+        
+        // Validação: email
+        if (!emailVar.includes("@") || !emailVar.includes(".com")) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "Email inválido!";
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+        }
+        
+        // Validação: nome com menos de 3 caracteres
+        if (nomeVar.length < 3) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "O nome deve ter pelo menos 3 caracteres!";
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+        }
+
+        // Validação: senha com menos de 8 caracteres
+        if (senhaVar.length < 8) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "Senha curta! Pelo menos 8 caracteres!";
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+        }
+
+        // Validação: senha fraca (sem letra, número e caractere especial)
+        var validacaoSenha = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).+$/.test(senhaVar);
+        if (!validacaoSenha) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "Senha fraca! Insira pelo menos: 1 letra, 1 número e 1 caractere especial.";
+            finalizarAguardar();
+            return false;
+        }
+
+        // Validação: senhas diferentes
+        if (senhaVar !== confirmacaoSenhaVar) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML = "As senhas devem ser iguais!";
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+        }
+
+        // Enviando o valor da input
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 emailServer: emailVar,
-                senhaServer: senhaVar,
-                idEmpresaVincularServer: idEmpresaVincular
+                senhaServer: senhaVar
             }),
-        })
-            .then(function (resposta) {
+        }).then(function (resposta) {
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
