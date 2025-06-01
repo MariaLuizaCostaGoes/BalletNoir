@@ -21,6 +21,16 @@ router.post("/enviarDadosQuiz", function(req, res) {
     usuarioController.enviarDadosQuiz(req, res);
 })
 
+router.post("/inicioQuiz", function(req, res){
+    usuarioController.inicioQuiz(req, res);
+})
 
+router.post("/finalQuiz", function (req, res) {
+    usuarioController.finalQuiz(req, res)
+})
+
+router.get("/PegaridQuiz/:dataInicioQuiz", function (req, res) {
+    usuarioController.PegaridQuiz(req, res)
+})
 
 module.exports = router;

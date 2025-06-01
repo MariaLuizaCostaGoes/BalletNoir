@@ -96,9 +96,42 @@ function enviarDadosQuiz(req, res) {
 
 }
 
+function inicioQuiz(req, res) {
+    var startTime = req.body.startTimeServer
+    var tipo = req.body.tipoServer
+    usuarioModel.inicioQuiz(startTime, tipo).then(function (resultado) {
+          res.status(200).send({startTime: startTime, tipo: tipo})
+    }).catch(function (erro){
+        res.status(500).json(erro.sqlMessage)
+    })
+}
+
+function finalQuiz(req, res) {
+    var endTime = req.body.endTimeServer
+    var startTime = req.body.startTimeServer
+    var idQuiz = req.body.idQuizServer
+    usuarioModel.finalQuiz(endTime, startTime, idQuiz).then(function (resultado) {
+          res.status(200).send({endTime: endTime, startTime: startTime, idQuiz: idQuiz})
+    }).catch(function (erro){
+        res.status(500).json(erro.sqlMessage)
+    })
+}
+
+function PegaridQuiz(req, res) {
+    var dataInicioQuiz = req.params.dataInicioQuiz
+    usuarioModel.PegaridQuiz(dataInicioQuiz).then(function (resultado) {
+        res.status(200).json(resultado)
+    }).catch(function (erro) {
+        res.status(500).json(erro.sqlMessage)
+    })
+}
+
 module.exports = {
     autenticar,
     cadastrar,
     pegarDescricao,
-    enviarDadosQuiz
+    enviarDadosQuiz,
+    inicioQuiz,
+    finalQuiz,
+    PegaridQuiz
 }

@@ -1,3 +1,4 @@
+const { idQuiz } = require("../controllers/usuariosControllers");
 var database = require("../database/config")
 
 function autenticar(email, senha) {
@@ -32,9 +33,30 @@ function enviarDadosQuiz(fkVariacao, fkUsuario) {
     return database.executar(instrucaoSQL);
 }
 
+function inicioQuiz(startTime, tipo) {
+    var instrucaoSQL = `insert into quiz (startTime, tipo) values ('${startTime}', '${tipo}');`
+    console.log("Executando a instrução SQL: \n" + instrucaoSQL);
+    return database.executar(instrucaoSQL);
+}
+
+function finalQuiz(endTime, startTime, idQuiz) {
+    var instrucaoSQL = `update quiz set endTime = '${endTime}' where startTime = '${startTime}' and idQuiz = ${idQuiz};`
+    console.log("Executando a instrução SQL: \n" + instrucaoSQL);
+    return database.executar(instrucaoSQL);
+}
+
+function PegaridQuiz(dataInicioQuiz) {
+    var instrucaoSql = `select idQuiz from quiz where startTime = '${dataInicioQuiz}';`
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
     pegarDescricao,
-    enviarDadosQuiz
+    enviarDadosQuiz,
+    inicioQuiz,
+    finalQuiz,
+    PegaridQuiz
 };

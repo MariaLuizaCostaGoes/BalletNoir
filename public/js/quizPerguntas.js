@@ -266,16 +266,30 @@ const nextButtons = document.getElementById("next-btn");
 // ver qual questão é a atual
 let IndexPergunta = 0
 
+function dataHoraMomento() {
+    const date = new Date();
+    const ano = date.getFullYear();
+    const mes = String(date.getMonth() + 1).padStart(2, '0');
+    const dia = String(date.getDate()).padStart(2, '0');
+    const horas = String(date.getHours()).padStart(2, '0');
+    const minutos = String(date.getMinutes()).padStart(2, '0');
+    const segundos = String(date.getSeconds()).padStart(2, '0');
+
+    const dataHoraFormatada = `${ano}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
+    return dataHoraFormatada;
+};
+
 function startQuizFem() {
     IndexPergunta = 0
     mostrarPerguntaFem();
+    inicioQuiz(dataHoraMomento(), "Fem");
 
 }
 
 function startQuizMasc() {
     IndexPergunta = 0
     mostrarPerguntaMasc();
-
+    inicioQuiz(dataHoraMomento(), "Masc");
 }
 
 let currentQuestionMasc = '';
@@ -357,6 +371,32 @@ function respostaMasc(numResposta) {
 
 }
 
+function finalQuiz(endTime, startTime, idQuiz) {
+    fetch(`/usuarios/finalQuiz`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                endTimeServer: endTime,
+                startTimeServer: startTime,
+                idQuizServer: idQuiz
+            })
+        }
+    ).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(resposta)
+                console.log(JSON.stringify(resposta))
+
+            })
+        } else {
+            console.log('Erro ao enviar dados para o Banco de Dados!')
+        }
+    }).catch(function (erro) { console.log(erro) })
+}
+
 function finalizarQuizFem() {
     var variacaoUsuarioFem = ''
     var pontuacaoVariacaoFem = 0
@@ -369,14 +409,14 @@ function finalizarQuizFem() {
 
     var btnCima = document.getElementById('btnCima')
     var btnBaixo = document.getElementById('btnBaixo')
-    var divDescricao = document.getElementById('descricao_txt')
     var idVariacao = pegaridVariacao(variacaoUsuarioFem)
-    var descricao = pegarDescricaoVariacao(idVariacao)
     btnCima.style.display = 'none'
     btnBaixo.style.display = 'none'
     perguntaElement.innerHTML = `Sua variação é: ${variacaoUsuarioFem}`
-    divDescricao.style.display = 'flex'
-    divDescricao.innerHTML = descricao
+    var startTime = sessionStorage.DATA_INICIO
+    PegaridQuiz(startTime)
+    var idQuiz = sessionStorage.ID_QUIZ
+    finalQuiz(dataHoraMomento(), startTime, sessionStorage.ID_QUIZ);
 }
 
 function finalizarQuizMasc() {
@@ -391,25 +431,28 @@ function finalizarQuizMasc() {
     }
     var btnCima = document.getElementById('btnCima')
     var btnBaixo = document.getElementById('btnBaixo')
-    var divDescricao = document.getElementById('descricao_txt')
     var idVariacao = pegaridVariacao(variacaoUsuarioMasc)
-    var descricao = pegarDescricaoVariacao(idVariacao)
     btnCima.style.display = 'none'
     btnBaixo.style.display = 'none'
     perguntaElement.innerHTML = `Sua variação é: ${variacaoUsuarioMasc}`
-    divDescricao.style.display = 'flex'
-    divDescricao.innerHTML = descricao
-
+    var startTime = sessionStorage.DATA_INICIO
+    PegaridQuiz(startTime)
+    var idQuiz = sessionStorage.ID_QUIZ
+    finalQuiz(dataHoraMomento(), startTime, sessionStorage.ID_QUIZ);
 }
 
 function pegarDescricaoVariacao(idVariacao) {
-    fetch(`/usuarios/${idVariacao}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/usuarios/pegarDescricao/${idVariacao}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
-                return resposta[0]
+                var divDescricao = document.getElementById('descricao_txt')
+                divDescricao.style.display = 'flex'
+                divDescricao.innerHTML = JSON.stringify(resposta[0].descricaoVariacao)
             })
+        } else {
+            console.log('Erro ao enviar dados para o Banco de Dados!')
         }
-    })
+    }).catch(function (erro) { console.log(erro) })
 }
 
 function pegaridVariacao(nomeVariacao) {
@@ -445,6 +488,18 @@ function pegaridVariacao(nomeVariacao) {
     else return 30;
 }
 
+function PegaridQuiz(dataInicioQuiz) {
+    fetch(`/usuarios/PegaridQuiz/${dataInicioQuiz}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                sessionStorage.ID_QUIZ = resposta[0].idQuiz
+            })
+        } else {
+            console.log('Erro ao enviar dados para o Banco de Dados!')
+        }
+    }).catch(function (erro) { console.log(erro) })
+}
+
 function enviarDadosQuiz(fkVariacao, fkUsuario) {
     fetch(`/usuarios/enviarDadosQuiz`,
         {
@@ -467,5 +522,30 @@ function enviarDadosQuiz(fkVariacao, fkUsuario) {
         } else {
             console.log('Erro ao enviar dados para o Banco de Dados!')
         }
-    }).catch(function(erro){console.log(erro)})
+    }).catch(function (erro) { console.log(erro) })
+}
+
+function inicioQuiz(startTime, tipo) {
+    fetch(`/usuarios/inicioQuiz`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                startTimeServer: startTime,
+                tipoServer: tipo
+            })
+        }
+    ).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(resposta)
+                console.log(JSON.stringify(resposta))
+                sessionStorage.DATA_INICIO = resposta.startTime
+            })
+        } else {
+            console.log('Erro ao enviar dados para o Banco de Dados!')
+        }
+    }).catch(function (erro) { console.log(erro) })
 }
