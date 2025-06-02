@@ -29,7 +29,7 @@ router.post("/finalQuiz", function (req, res) {
     usuarioController.finalQuiz(req, res)
 })
 
-router.get("/PegaridQuiz/:dataInicioQuiz", function (req, res) {
+router.post("/PegaridQuiz/:dataInicioQuiz", function (req, res) {
     usuarioController.PegaridQuiz(req, res)
 })
 

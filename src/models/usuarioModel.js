@@ -34,7 +34,7 @@ function enviarDadosQuiz(fkVariacao, fkUsuario) {
 }
 
 function inicioQuiz(startTime, tipo) {
-    var instrucaoSQL = `insert into quiz (startTime, tipo) values ('${startTime}', '${tipo}');`
+    var instrucaoSQL = `insert into quiz (startTime, tipo, endTime) values ('${startTime}', '${tipo}', '${startTime}');`
     console.log("Executando a instrução SQL: \n" + instrucaoSQL);
     return database.executar(instrucaoSQL);
 }

@@ -372,6 +372,7 @@ function respostaMasc(numResposta) {
 }
 
 function finalQuiz(endTime, startTime, idQuiz) {
+    console.log(idQuiz)
     fetch(`/usuarios/finalQuiz`,
         {
             method: 'POST',
@@ -414,9 +415,7 @@ function finalizarQuizFem() {
     btnBaixo.style.display = 'none'
     perguntaElement.innerHTML = `Sua variação é: ${variacaoUsuarioFem}`
     var startTime = sessionStorage.DATA_INICIO
-    PegaridQuiz(startTime)
-    var idQuiz = sessionStorage.ID_QUIZ
-    finalQuiz(dataHoraMomento(), startTime, sessionStorage.ID_QUIZ);
+    PegaridQuiz(startTime, dataHoraMomento())
 }
 
 function finalizarQuizMasc() {
@@ -436,9 +435,7 @@ function finalizarQuizMasc() {
     btnBaixo.style.display = 'none'
     perguntaElement.innerHTML = `Sua variação é: ${variacaoUsuarioMasc}`
     var startTime = sessionStorage.DATA_INICIO
-    PegaridQuiz(startTime)
-    var idQuiz = sessionStorage.ID_QUIZ
-    finalQuiz(dataHoraMomento(), startTime, sessionStorage.ID_QUIZ);
+    PegaridQuiz(startTime, dataHoraMomento())
 }
 
 function pegarDescricaoVariacao(idVariacao) {
@@ -488,17 +485,29 @@ function pegaridVariacao(nomeVariacao) {
     else return 30;
 }
 
-function PegaridQuiz(dataInicioQuiz) {
-    fetch(`/usuarios/PegaridQuiz/${dataInicioQuiz}`, { cache: 'no-store' }).then(function (response) {
+function PegaridQuiz(dataInicioQuiz, endTime) {
+    fetch(`/usuarios/PegaridQuiz/${dataInicioQuiz}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            endTimeServer: endTime
+        }),
+        cache: 'no-store'
+    }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
-                sessionStorage.ID_QUIZ = resposta[0].idQuiz
-            })
+                sessionStorage.ID_QUIZ = resposta[0].idQuiz;
+            });
         } else {
-            console.log('Erro ao enviar dados para o Banco de Dados!')
+            console.log('Erro ao enviar dados para o Banco de Dados!');
         }
-    }).catch(function (erro) { console.log(erro) })
+    }).catch(function (erro) {
+        console.log('Erro na requisição:', erro);
+    });
 }
+
 
 function enviarDadosQuiz(fkVariacao, fkUsuario) {
     fetch(`/usuarios/enviarDadosQuiz`,
