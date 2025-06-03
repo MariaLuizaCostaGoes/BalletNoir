@@ -4,14 +4,16 @@ USE ballet;
 CREATE TABLE IF NOT EXISTS usuario (
 	idUsuario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 	nome VARCHAR(45) NOT NULL,
-	email VARCHAR(45) NOT NULL,
+	email VARCHAR(45) NOT NULL UNIQUE,
 	senha VARCHAR(45) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS quiz (
 	idQuiz INT PRIMARY KEY AUTO_INCREMENT,
 	startTime DATETIME,
-	endTime DATETIME
+	endTime DATETIME,
+    tipo ENUM('Masc', 'Fem'),
+    constraint ckTipo check (tipo in ('Masc', 'Fem'))
 );
 
 CREATE TABLE IF NOT EXISTS variacao (
@@ -26,9 +28,7 @@ CREATE TABLE IF NOT EXISTS resultado (
     fkQuiz INT,
     fkUsuario INT,
     fkVariacao INT,
-    nomeVariacao VARCHAR(45),
-    nomeBalletdeRepertorio VARCHAR(45),
-    descricaoVariacao VARCHAR(1000),
+    avalicao INT DEFAULT 5,
     PRIMARY KEY (idResultado , fkQuiz , fkUsuario , fkVariacao),
     FOREIGN KEY (fkQuiz)
         REFERENCES quiz(idQuiz),
