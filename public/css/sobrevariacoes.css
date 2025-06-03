@@ -121,40 +121,64 @@ nav a:hover::after {
     min-width: 100vw;
     min-height: 60dvh;
     position: relative;
-    background-color: #98fb98;
-
 }
 
 /* ---------- CARROSSEL ---------- */
 
-.botao {
-    width: 5vw;
-    height: 5vw;
-    background-color: #e0668c;
-    position: absolute;
-    right: 2vw;
-    top: 15vh;
+.carrossel {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 40px 20px;
+    scrollbar-width: none;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.carrossel {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 1.2rem;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    width: 60vw;
-    overflow: hidden;
+.carrossel::-webkit-scrollbar {
+    display: none;
 }
 
 .card {
-    background-size: cover;
-    min-height: 350px;
-    min-width: 450px;
+    flex: 0 0 auto;
+    width: 320px;
+    height: 440px;
     scroll-snap-align: center;
-    border-radius: 40px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.botao {
+    width: 50px;
+    height: 50px;
+    background-color: #f18397;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    right: 2vw;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+.botao:hover {
+    background-color: #d96885;
+}
+
 
 .card-OQuebraNozes {
     background-image: url('../img/OQuebraNozes.jpg');
@@ -212,7 +236,7 @@ nav a:hover::after {
 }
 
 .card-Spartacus {
-    background-image: url('../img/card-Spartacus.gif');
+    background-image: url('../img/card.jpg');
     background-size: cover;
 }
 

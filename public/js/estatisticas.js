@@ -33,17 +33,17 @@
 
 function variacaoMaisEscolhida() {
     fetch(`/dashboard/variacaoMaisEscolhida`, { cache: 'no-store' })
-    .then(function (response) {
-        console.log('teste')
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                 console.log('resposta' + JSON.stringify(resposta))
-                plotarGrafico(resposta);
-            })
-        } else {
-            console.log('Erro ao enviar dados para o Banco de Dados!')
-        }
-    }).catch(function (erro) { console.log(erro) })
+        .then(function (response) {
+            console.log('teste')
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log('resposta' + JSON.stringify(resposta))
+                    plotarGrafico(resposta);
+                })
+            } else {
+                console.log('Erro ao enviar dados para o Banco de Dados!')
+            }
+        }).catch(function (erro) { console.log(erro) })
 }
 window.addEventListener('load', variacaoMaisEscolhida)
 
@@ -55,11 +55,11 @@ function plotarGrafico(resposta) {
     const data_masc_mais = {
         labels: label_masc_mais,
         datasets: [{
-            label: 'Variacao',
-            data: resposta,
+            label: 'Variacao Masculina mais escolhida',
+            data: [],
             fill: false,
             borderColor: '#551c36',
-            backgroundColor: '#551c36',
+            backgroundColor: '#ADD8E6',
             tension: 0.1
         },
         ]
@@ -71,25 +71,19 @@ function plotarGrafico(resposta) {
     const data_fem_mais = {
         labels: label_fem_mais,
         datasets: [{
-            label: 'Variacao Feminina',
+            label: 'Variacao Feminina mais escolhida',
             data: [],
             fill: false,
             borderColor: '#551c36',
             backgroundColor: '#551c36',
             tension: 0.1,
-            backgroundColor: [
-                'rgb(0, 102, 255)',
-                'pink',
-                'rgb(0, 102, 255)',
-                'rgb(0, 102, 255)',
-                'rgb(0, 102, 255)',
-                'rgb(0, 102, 255)'
-            ],
+            backgroundColor: '#e0668c',
         },
-        ], 
+        ],
     };
-    var res_fem_index = resposta.resultadoMasc.length
-    var res_fem = resposta.tipo1
+    var res_fem_index = resposta.resultadoFem.length;
+    var res_fem = resposta.resultadoFem;
+
     console.log()
     for (let i = 0; i < res_fem_index; i++) {
         var registro = res_fem[i];
@@ -98,8 +92,8 @@ function plotarGrafico(resposta) {
         data_fem_mais.datasets[0].data.push(registro.total);
 
     }
-    var res_masc_index = resposta.tipo2.length
-    var res_masc = resposta.tipo2
+    var res_masc_index = resposta.resultadoMasc.length;
+    var res_masc = resposta.resultadoMasc;
     console.log('data_masc_mais' + JSON.stringify(data_masc_mais))
     for (let i = 0; i < res_masc_index; i++) {
         var registro = res_masc[i];
@@ -113,7 +107,7 @@ function plotarGrafico(resposta) {
         data: data_fem_mais,
         options: {
             scales: {
-                y:{
+                y: {
                     min: 0,
                     max: 10,
                     ticks: {
@@ -126,7 +120,17 @@ function plotarGrafico(resposta) {
     const config_masc_mais = {
         type: 'bar',
         data: data_masc_mais,
-
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
 
     };
     const ctx_fem_mais = document.getElementById('variacaoFemMaisEscolhida').getContext('2d');
