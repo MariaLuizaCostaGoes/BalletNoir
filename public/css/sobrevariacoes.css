@@ -118,8 +118,22 @@ nav a:hover::after {
 }
 
 .container {
-    max-width: 550px;
-    min-width: 350px;
+    min-width: 100vw;
+    min-height: 60dvh;
+    position: relative;
+    background-color: #98fb98;
+
+}
+
+/* ---------- CARROSSEL ---------- */
+
+.botao {
+    width: 5vw;
+    height: 5vw;
+    background-color: #e0668c;
+    position: absolute;
+    right: 2vw;
+    top: 15vh;
 }
 
 .carrossel {
@@ -130,50 +144,98 @@ nav a:hover::after {
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    width: 60vw;
+    overflow: hidden;
 }
 
 .card {
-    background: aqua;
+    background-size: cover;
     min-height: 350px;
     min-width: 450px;
     scroll-snap-align: center;
     border-radius: 40px;
 }
 
-.card-giselle {
-    background-image: url('../img/giselleprimeiroato.jpg');
+.card-OQuebraNozes {
+    background-image: url('../img/OQuebraNozes.jpg');
     background-size: cover;
 }
 
-.card-giselle {
-    background-image: url('../img/giselleprimeiroato.jpg');
+.card-Giselle {
+    background-image: url('../img/card-Giselle.jpg');
     background-size: cover;
 }
 
-.card-giselle {
-    background-image: url('../img/giselleprimeiroato.jpg');
+.card-DomQuixote {
+    background-image: url('../img/card-DomQuixote.jpg');
     background-size: cover;
 }
 
-.card-giselle {
-    background-image: url('../img/giselleprimeiroato.jpg');
+.card-OLagodosCisnes {
+    background-image: url('../img/card-OLagodosCisnes.jpg');
     background-size: cover;
 }
 
-.card-giselle {
-    background-image: url('../img/giselleprimeiroato.jpg');
+.card-ABelaAdormecida {
+    background-image: url('../img/card-ABelaAdormecida.webp');
     background-size: cover;
 }
 
-.card-giselle {
-    background-image: url('../img/giselleprimeiroato.jpg');
+.card-Esmeralda {
+    background-image: url('../img/card-Esmeralda.jpg');
     background-size: cover;
 }
 
-.card-giselle {
-    background-image: url('../img/giselleprimeiroato.jpg');
+.card-Paquita {
+    background-image: url('../img/card-Paquita.jpg');
     background-size: cover;
 }
+
+.card-Raymonda {
+    background-image: url('../img/card-Raymonda.gif');
+    background-size: cover;
+}
+
+.card-LeCorsaire {
+    background-image: url('../img/card-LeCorsaire.webp');
+    background-size: cover;
+}
+
+.card-LaBayadere {
+    background-image: url('../img/LaBayadere.jpg');
+    background-size: cover;
+}
+
+.card-Petrouchka {
+    background-image: url('../img/card-Petrouchka.jpg');
+    background-size: cover;
+}
+
+.card-Spartacus {
+    background-image: url('../img/card-Spartacus.gif');
+    background-size: cover;
+}
+
+.card-ChamasdeParis {
+    background-image: url('../img/card-ChamasdeParis.jpg');
+    background-size: cover;
+}
+
+.card-OTalisma {
+    background-image: url('../img/card-OTalisma.jpg');
+    background-size: cover;
+}
+
+.card-Scherazade {
+    background-image: url('../img/card-Scherazade.jpg');
+    background-size: cover;
+}
+
+.card-DianaeActeon {
+    background-image: url('../img/card-DianaeActeon.jpg');
+    background-size: cover;
+}
+
 
 .variacao {
     display: flex;

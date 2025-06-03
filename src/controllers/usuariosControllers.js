@@ -120,6 +120,8 @@ function finalQuiz(req, res) {
 function PegaridQuiz(req, res) {
     var dataInicioQuiz = req.params.dataInicioQuiz
     var endTime = req.body.endTimeServer
+    var fkVariacao = req.body.fkVariacaoServer
+    var fkUsuario = req.body.fkUsuarioServer
     usuarioModel.PegaridQuiz(dataInicioQuiz).then(function (resultado) {
         res.status(200).json(resultado)
         if (resultado.length == 1) {
@@ -128,8 +130,14 @@ function PegaridQuiz(req, res) {
             }).catch(function (erro) {
                 res.status(500).json(erro.sqlMessage)
             })
-        } else {
 
+            if (resultado.length == 1) {
+                usuarioModel. enviarDadosQuiz(fkVariacao, fkUsuario, resultado[0].idQuiz).then(function (resultadoinsert) {
+                    res.status(200).json(resultadoinsert)
+                }).catch(function (erro) {
+                    res.status(500).json(erro.sqlMessage)
+                })
+            }
         }
     }).catch(function (erro) {
         res.status(500).json(erro.sqlMessage)

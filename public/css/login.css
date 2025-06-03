@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('./img/imgLoginCadastro.png');
+    background-image: url('../img/imgLoginCadastro.png');
     background-size: cover;
     background-position: center;
     height: 100vh;

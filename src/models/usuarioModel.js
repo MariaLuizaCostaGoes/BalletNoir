@@ -27,8 +27,8 @@ function pegarDescricao(idVariacao) {
     return database.executar(instrucaoSql);
 }
 
-function enviarDadosQuiz(fkVariacao, fkUsuario) {
-    var instrucaoSQL = `insert into resultado (fkVariacao, fkUsuario) values (${fkVariacao}, ${fkUsuario});`
+function enviarDadosQuiz(fkVariacao, fkUsuario, fkQuiz) {
+    var instrucaoSQL = `insert into resultado (fkVariacao, fkUsuario, fkQuiz) values (${fkVariacao}, ${fkUsuario}, ${fkQuiz});`
     console.log("Executando a instrução SQL: \n" + instrucaoSQL);
     return database.executar(instrucaoSQL);
 }

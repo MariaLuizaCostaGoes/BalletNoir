@@ -411,15 +411,19 @@ function finalizarQuizFem() {
     var btnCima = document.getElementById('btnCima')
     var btnBaixo = document.getElementById('btnBaixo')
     var idVariacao = pegaridVariacao(variacaoUsuarioFem)
+    var idUsuario = sessionStorage.ID_USUARIO
     btnCima.style.display = 'none'
     btnBaixo.style.display = 'none'
     perguntaElement.innerHTML = `Sua variação é: ${variacaoUsuarioFem}`
     var startTime = sessionStorage.DATA_INICIO
-    PegaridQuiz(startTime, dataHoraMomento())
+    PegaridQuiz(startTime, dataHoraMomento(), idVariacao, idUsuario)
+    pegarDescricaoVariacao(idUsuario)
 }
 
 function finalizarQuizMasc() {
     var variacaoUsuarioMasc = ''
+    var idUsuario = sessionStorage.ID_USUARIO
+
     var pontuacaoVariacaoMasc = 0
     for (var variacaonome in pontuacaoMasculina) {
         if (pontuacaoMasculina[variacaonome] > pontuacaoVariacaoMasc) {
@@ -435,7 +439,8 @@ function finalizarQuizMasc() {
     btnBaixo.style.display = 'none'
     perguntaElement.innerHTML = `Sua variação é: ${variacaoUsuarioMasc}`
     var startTime = sessionStorage.DATA_INICIO
-    PegaridQuiz(startTime, dataHoraMomento())
+    PegaridQuiz(startTime, dataHoraMomento(), idVariacao, idUsuario)
+
 }
 
 function pegarDescricaoVariacao(idVariacao) {
@@ -443,13 +448,15 @@ function pegarDescricaoVariacao(idVariacao) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 var divDescricao = document.getElementById('descricao_txt')
-                divDescricao.style.display = 'flex'
+                divDescricao.style.display = 'block'
                 divDescricao.innerHTML = JSON.stringify(resposta[0].descricaoVariacao)
             })
         } else {
             console.log('Erro ao enviar dados para o Banco de Dados!')
         }
-    }).catch(function (erro) { console.log(erro) })
+    }).catch(function (erro) {
+        console.log(erro);
+    })
 }
 
 function pegaridVariacao(nomeVariacao) {
@@ -485,14 +492,17 @@ function pegaridVariacao(nomeVariacao) {
     else return 30;
 }
 
-function PegaridQuiz(dataInicioQuiz, endTime) {
+function PegaridQuiz(dataInicioQuiz, endTime, fkVariacao, fkUsuario) {
     fetch(`/usuarios/PegaridQuiz/${dataInicioQuiz}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            endTimeServer: endTime
+            endTimeServer: endTime,
+            fkVariacaoServer: fkVariacao,
+            fkUsuarioServer: fkUsuario
+
         }),
         cache: 'no-store'
     }).then(function (response) {
