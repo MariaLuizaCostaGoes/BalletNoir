@@ -2,7 +2,7 @@ var database = require('../database/config');
 
 function tempoDeConclusao(idUsuario) {
 	const instrucao = `
-    SELECT timediff(startTime, endTime) 'Tempo de conclusão' FROM quiz WHERE fkUsuario = ${idUsuario};
+    SELECT timediff(endTime, startTime) 'Tempo de conclusão' FROM resultado join usuario on fkUsuario = ${idUsuario} join quiz on fkQuiz = idQuiz limit 1;
   `;
 
 	console.log('Executando a instrução SQL: \n' + instrucao);
@@ -25,8 +25,26 @@ function mediaTempodeConclusaoMasc() {
 	return database.executar(instrucao);
 }
 
+function qtdVezesFem(idUsuario) {
+const instrucao = `
+	select count(*) from usuario join resultado on fkUsuario = idUsuario join quiz on fkquiz = idQuiz where idUsuario = ${idUsuario} and tipo = 'Fem';
+	`;
+	console.log('Executando a instrução SQL: \n' + instrucao);
+	return database.executar(instrucao);
+}
+
+function qtdVezesMasc(idUsuario) {
+const instrucao = `
+	select count(*) from usuario join resultado on fkUsuario = idUsuario join quiz on fkquiz = idQuiz where idUsuario = ${idUsuario} and tipo = 'Masc';
+	`;
+	console.log('Executando a instrução SQL: \n' + instrucao);
+	return database.executar(instrucao);
+}
+
 module.exports = {
 	tempoDeConclusao,
 	mediaTempodeConclusaoFem,
-	mediaTempodeConclusaoMasc
+	mediaTempodeConclusaoMasc,
+	qtdVezesFem,
+	qtdVezesMasc
 };

@@ -30,14 +30,18 @@
 //     else if (id == 29) return 'Acteon';
 //     else return 'O Corsarie';
 // }
+window.onload = () => {
+    variacaoMaisEscolhida();
+    kpiTempoDeConclusao(sessionStorage.ID_USUARIO)
+    kpiQtdVezesFem(sessionStorage.ID_USUARIO)
+    kpiQtdVezesMasc(sessionStorage.ID_USUARIO)
+}
 
 function variacaoMaisEscolhida() {
     fetch(`/dashboard/variacaoMaisEscolhida`, { cache: 'no-store' })
         .then(function (response) {
-            console.log('teste')
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    console.log('resposta' + JSON.stringify(resposta))
                     plotarGrafico(resposta);
                 })
             } else {
@@ -45,7 +49,56 @@ function variacaoMaisEscolhida() {
             }
         }).catch(function (erro) { console.log(erro) })
 }
-window.addEventListener('load', variacaoMaisEscolhida)
+
+function kpiTempoDeConclusao(idUsuario) {
+    fetch(`/kpi/tempoDeConclusao/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                var divKpiTempo = document.getElementById('kpiTempoDeConclusao')
+                divKpiTempo.innerHTML = resposta[0]['Tempo de conclusão']
+            })
+        } else {
+            console.log('Erro ao enviar dados para o banco de dados')
+        }
+    }).catch(function (erro) {
+        console.log(erro)
+    })
+}
+
+function kpiQtdVezesFem(idUsuario) {
+    fetch(`/kpi/qtdVezesFem/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+
+                var divKpiQtdFem = document.getElementById('kpiQtdVezesFem')
+                divKpiQtdFem.innerHTML = resposta[0]['count(*)']
+            })
+        } else {
+            console.log('Erro ao enviar dados para o banco de dados')
+        }
+    }).catch(function (erro) {
+        console.log(erro)
+    })
+}
+
+
+function kpiQtdVezesMasc(idUsuario) {
+    fetch(`/kpi/qtdVezesMasc/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+
+                var divKpiQtdMasc = document.getElementById('kpiQtdVezesMasc')
+                divKpiQtdMasc.innerHTML = resposta[0]['count(*)']
+            })
+        } else {
+            console.log('Erro ao enviar dados para o banco de dados')
+        }
+    }).catch(function (erro) {
+        console.log(erro)
+    })
+}
+
+
 
 let GraficoFem = null;
 let GraficoMasc = null;

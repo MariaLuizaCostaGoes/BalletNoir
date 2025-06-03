@@ -7,8 +7,12 @@ router.get('/tempoDeConclusao/:idUsuario', (req, res) => {
   kpiController.tempoDeConclusao(req, res);
 });
 
-router.get(`/mediaTempodeConclusao`, (req, res) => {
-  kpiController.mediaTempodeConclusao(req, res);
-});
+router.get('/qtdVezesFem/:idUsuario', (req, res) => {
+  kpiController.qtdVezesFem(req, res);
+})
+
+router.get('/qtdVezesMasc/:idUsuario', (req, res) => {
+  kpiController.qtdVezesMasc(req, res);
+})
 
 module.exports = router;
