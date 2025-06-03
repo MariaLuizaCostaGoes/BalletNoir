@@ -100,3 +100,16 @@ body {
 	font-weight: bold;
 	color: var(--amarelo);
 }
+
+.container-pai {
+    display: flex;
+    flex-direction: row;
+}
+
+.container-esquerda {
+    width: 50%;
+}
+
+.container-direita {
+    width: 50%;
+}

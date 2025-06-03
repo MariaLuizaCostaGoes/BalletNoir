@@ -28,22 +28,11 @@ function variacaoMaisEscolhida(req, res) {
 }
 
 function variacaoMaisEscolhida(req, res) {
-    var tipo1 = 'Masc';
-    var tipo2 = 'Fem';
+    var tipo = req.params.tipo
 
-    dashboardModel.variacaoMaisEscolhida(tipo1)
-        .then((resultadoMasc) => {
-            dashboardModel.variacaoMaisEscolhida(tipo2)
-                .then((resultadoFem) => {
-                    res.json({
-                        resultadoMasc,
-                        resultadoFem
-                    });
-                })
-                .catch((erro) => {
-                    console.error("Erro no Fem:", erro);
-                    res.status(500).json({ erro: erro.sqlMessage || erro.message });
-                });
+    dashboardModel.variacaoMaisEscolhida(tipo)
+        .then((resultado) => {
+        res.status(200).json(resultado);
         })
         .catch((erro) => {
             console.error("Erro no Masc:", erro);

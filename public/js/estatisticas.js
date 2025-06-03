@@ -31,18 +31,23 @@
 //     else return 'O Corsarie';
 // }
 window.onload = () => {
-    variacaoMaisEscolhida();
+    variacaoMaisEscolhida('Masc');
+    variacaoMaisEscolhida('Fem');
     kpiTempoDeConclusao(sessionStorage.ID_USUARIO)
     kpiQtdVezesFem(sessionStorage.ID_USUARIO)
     kpiQtdVezesMasc(sessionStorage.ID_USUARIO)
 }
 
-function variacaoMaisEscolhida() {
-    fetch(`/dashboard/variacaoMaisEscolhida`, { cache: 'no-store' })
+function variacaoMaisEscolhida(tipo) {
+    fetch(`/dashboard/variacaoMaisEscolhida/${tipo}`, { cache: 'no-store' })
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    plotarGrafico(resposta);
+                    if (tipo == 'Masc') {
+                        plotarGraficoMasc(resposta);
+                    } else {
+                        plotarGraficoFem(resposta)
+                    }
                 })
             } else {
                 console.log('Erro ao enviar dados para o Banco de Dados!')
@@ -98,66 +103,78 @@ function kpiQtdVezesMasc(idUsuario) {
     })
 }
 
+function plotarGraficoMasc(resposta) {
 
+    var labels_masc = []
 
-let GraficoFem = null;
-let GraficoMasc = null;
-
-function plotarGrafico(resposta) {
-    const label_masc_mais = []
-    const data_masc_mais = {
-        labels: label_masc_mais,
+    var data_grafico_masc = {
+        labels: labels_masc,
         datasets: [{
-            label: 'Variacao Masculina mais escolhida',
+            label: '',
             data: [],
             fill: false,
             borderColor: '#551c36',
             backgroundColor: '#ADD8E6',
             tension: 0.1
-        },
-        ]
-    };
+        }]
+    }
 
 
+    for (var i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        labels_masc.push(registro.nomeVariacao);
+        data_grafico_masc.datasets[0].data.push(registro.total)
 
-    const label_fem_mais = []
-    const data_fem_mais = {
-        labels: label_fem_mais,
+    }
+
+    var config_grafico_masc = {
+        type: 'bar',
+        data: data_grafico_masc,
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    }
+
+    var canvasGraficoMasc = document.getElementById('variacaoMascMaisEscolhida')
+
+    new Chart(canvasGraficoMasc, config_grafico_masc)
+}
+
+function plotarGraficoFem(resposta) {
+
+    var labels_Fem = []
+
+    var data_grafico_Fem = {
+        labels: labels_Fem,
         datasets: [{
-            label: 'Variacao Feminina mais escolhida',
+            label: '',
             data: [],
             fill: false,
-            borderColor: '#551c36',
-            backgroundColor: '#551c36',
-            tension: 0.1,
-            backgroundColor: '#e0668c',
-        },
-        ],
-    };
-    var res_fem_index = resposta.resultadoFem.length;
-    var res_fem = resposta.resultadoFem;
+            borderColor: 'pink',
+            backgroundColor: 'pink',
+            tension: 0.1
+        }]
+    }
 
-    console.log()
-    for (let i = 0; i < res_fem_index; i++) {
-        var registro = res_fem[i];
-        console.log(registro)
-        label_fem_mais.push(registro.nomeVariacao);
-        data_fem_mais.datasets[0].data.push(registro.total);
+
+    for (var i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        labels_Fem.push(registro.nomeVariacao);
+        data_grafico_Fem.datasets[0].data.push(registro.total)
 
     }
-    var res_masc_index = resposta.resultadoMasc.length;
-    var res_masc = resposta.resultadoMasc;
-    console.log('data_masc_mais' + JSON.stringify(data_masc_mais))
-    for (let i = 0; i < res_masc_index; i++) {
-        var registro = res_masc[i];
-        console.log(registro)
-        label_masc_mais.push(registro.nomeVariacao);
-        data_masc_mais.datasets[0].data.push(registro.total);
 
-    }
-    const config_fem_mais = {
+    var config_grafico_Fem = {
         type: 'bar',
-        data: data_fem_mais,
+        data: data_grafico_Fem,
         options: {
             scales: {
                 y: {
@@ -169,25 +186,9 @@ function plotarGrafico(resposta) {
                 }
             }
         }
-    };
-    const config_masc_mais = {
-        type: 'bar',
-        data: data_masc_mais,
-        options: {
-            scales: {
-                y: {
-                    min: 0,
-                    max: 10,
-                    ticks: {
-                        stepSize: 1
-                    }
-                }
-            }
-        }
+    }
 
-    };
-    const ctx_fem_mais = document.getElementById('variacaoFemMaisEscolhida').getContext('2d');
-    let GraficoFem = new Chart(ctx_fem_mais, config_fem_mais);
-    const ctx_masc_mais = document.getElementById('variacaoMascMaisEscolhida').getContext('2d');
-    let GraficoMasc = new Chart(ctx_masc_mais, config_masc_mais);
+    var canvasGraficoFem = document.getElementById('variacaoFemMaisEscolhida')
+
+    new Chart(canvasGraficoFem, config_grafico_Fem)
 }

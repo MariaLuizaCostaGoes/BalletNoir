@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var dashboardController = require("../controllers/dashboardController");
 
-router.get(`/variacaoMaisEscolhida`, (req, res) => {
+router.get('/variacaoMaisEscolhida/:tipo', (req, res) => {
     dashboardController.variacaoMaisEscolhida(req, res);
 });
 

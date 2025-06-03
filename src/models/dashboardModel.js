@@ -9,7 +9,7 @@ function variacaoMaisEscolhida(tipo) {
       variacao v
     LEFT JOIN resultado r ON r.fkVariacao = v.idVariacao
     LEFT JOIN quiz q ON r.fkQuiz = q.idQuiz
-    WHERE q.tipo = '${tipo}' OR q.idQuiz IS NULL
+    WHERE v.genero = '${tipo}'
     GROUP BY 
       v.nomeVariacao
     ORDER BY 
