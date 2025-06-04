@@ -10,7 +10,6 @@ var vtVariacao = [
     "card-LeCorsaire",
     "card-LaBayadere",
     "card-Petrouchka",
-    "card-Spartacus",
     "card-ChamasdeParis",
     "card-OTalisma",
     "card-Scherazade",

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/estatisticas.css" />
     <script src="js/estatisticas.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.js"></script>
-
+    <script src="./js/sair.js"></script>
 </head>
 
 <body>
@@ -20,6 +20,7 @@
             <a href="sobrevariacoes.html">Sobre Variações</a>
             <a href="quiz.html">Quiz</a>
             <a href="estatisticas.html" class="a_atual">Estatísticas</a>
+            <a onclick="sair()">Sair</a>
         </nav>
     </header>
 
@@ -34,11 +35,11 @@
             <div class="kpi kpi2">
                 <p class="kpiTitle">Qtd de tentativas do quiz feminino</p>
                 <p class="kpiData" id="kpiQtdVezesFem">X</p>
-            </div> 
+            </div>
             <div class="kpi kpi3">
                 <p class="kpiTitle">Qtd de tentativas do quiz masculino</p>
                 <p class="kpiData" id="kpiQtdVezesMasc">Y</p>
-            </div> 
+            </div>
         </div>
         <div class="containerGrafico">
             <div class="Grafico Grafico1">
@@ -68,14 +69,14 @@
                 </div>
             </div>
             <div class="container-direita">
-                <canvas id="grafico-pizza-cima"></canvas>
-                <canvas id="grafico-pizza-baixo"></canvas>
+                <div class="perfil-page-graphic div-pizza">
+                    <canvas id="grafico-pizza-cima"></canvas>
+                </div>
+                <div class="perfil-page-graphic div-pizza">
+                    <canvas id="grafico-pizza-baixo"></canvas>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="perfil-page-button-container" id="button-container">
-        <button class="perfil-button-sair" id="botao-sair">Sair</button>
     </div>
 </body>
 

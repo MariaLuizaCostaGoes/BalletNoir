@@ -33,9 +33,12 @@
 window.onload = () => {
     variacaoMaisEscolhida('Masc');
     variacaoMaisEscolhida('Fem');
+    variacaoMaisCombina('Masc');
+    variacaoMaisCombina('Fem');
     kpiTempoDeConclusao(sessionStorage.ID_USUARIO)
     kpiQtdVezesFem(sessionStorage.ID_USUARIO)
     kpiQtdVezesMasc(sessionStorage.ID_USUARIO)
+
 }
 
 function variacaoMaisEscolhida(tipo) {
@@ -55,53 +58,23 @@ function variacaoMaisEscolhida(tipo) {
         }).catch(function (erro) { console.log(erro) })
 }
 
-function kpiTempoDeConclusao(idUsuario) {
-    fetch(`/kpi/tempoDeConclusao/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                var divKpiTempo = document.getElementById('kpiTempoDeConclusao')
-                divKpiTempo.innerHTML = resposta[0]['Tempo de conclusão']
-            })
-        } else {
-            console.log('Erro ao enviar dados para o banco de dados')
-        }
-    }).catch(function (erro) {
-        console.log(erro)
-    })
+function variacaoMaisCombina(tipo) {
+    fetch(`/dashboard/variacaoMaisCombina/${tipo}`, { cache: 'no-store' })
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    if (tipo == 'Masc') {
+                        plotarGraficoPizzaMasc(resposta);
+                    } else {
+                        plotarGraficoPizzaFem(resposta)
+                    }
+                })
+            } else {
+                console.log('Erro ao enviar dados para o Banco de Dados!')
+            }
+        }).catch(function (erro) { console.log(erro) })
 }
 
-function kpiQtdVezesFem(idUsuario) {
-    fetch(`/kpi/qtdVezesFem/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-
-                var divKpiQtdFem = document.getElementById('kpiQtdVezesFem')
-                divKpiQtdFem.innerHTML = resposta[0]['count(*)']
-            })
-        } else {
-            console.log('Erro ao enviar dados para o banco de dados')
-        }
-    }).catch(function (erro) {
-        console.log(erro)
-    })
-}
-
-
-function kpiQtdVezesMasc(idUsuario) {
-    fetch(`/kpi/qtdVezesMasc/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-
-                var divKpiQtdMasc = document.getElementById('kpiQtdVezesMasc')
-                divKpiQtdMasc.innerHTML = resposta[0]['count(*)']
-            })
-        } else {
-            console.log('Erro ao enviar dados para o banco de dados')
-        }
-    }).catch(function (erro) {
-        console.log(erro)
-    })
-}
 
 function plotarGraficoMasc(resposta) {
 
@@ -191,4 +164,161 @@ function plotarGraficoFem(resposta) {
     var canvasGraficoFem = document.getElementById('variacaoFemMaisEscolhida')
 
     new Chart(canvasGraficoFem, config_grafico_Fem)
+}
+
+function plotarGraficoPizzaMasc(resposta) {
+
+    var labels_masc = []
+
+    var data_grafico_masc = {
+        labels: labels_masc,
+        datasets: [{
+            label: 'Variação Masculina que mais combina com você',
+            data: [],
+            fill: false,
+            borderColor: '#551c36',
+            backgroundColor: [
+                'rgb(173, 216, 230)',
+                'rgb(135, 206, 250)', 
+                'rgb(0, 191, 255)',   
+                'rgb(30, 144, 255)',   
+                'rgb(70, 130, 180)',   
+                'rgb(65, 105, 225)',   
+                'rgb(0, 0, 255)',    
+                'rgb(25, 25, 112)',    
+                'rgb(0, 102, 204)'     
+            ],
+            tension: 0.1
+        }]
+    }
+
+
+    for (var i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        labels_masc.push(registro.nomeVariacao);
+        data_grafico_masc.datasets[0].data.push(registro.percentual)
+
+    }
+
+    var config_grafico_masc = {
+        type: 'pie',
+        data: data_grafico_masc
+    }
+
+    var canvasGraficoPizzaMasc = document.getElementById('grafico-pizza-cima')
+
+    new Chart(canvasGraficoPizzaMasc, config_grafico_masc)
+}
+
+function plotarGraficoPizzaFem(resposta) {
+
+    var labels_fem = []
+
+    var data_grafico_fem = {
+        labels: labels_fem,
+        datasets: [{
+            label: 'Variação Feminina que mais combina com você',
+            data: [],
+            fill: false,
+            borderColor: '#551c36',
+            backgroundColor: [
+                'rgb(255, 182, 193)',
+                'rgb(255, 105, 180)',
+                'rgb(255, 20, 147)',
+                'rgb(219, 112, 147)',
+                'rgb(255, 192, 203)',
+                'rgb(231, 84, 128)',
+                'rgb(245, 143, 169)',
+                'rgb(233, 30, 99)',
+                'rgb(240, 98, 146)',
+                'rgb(255, 128, 171)',
+                'rgb(255, 64, 129)',
+                'rgb(236, 64, 122)',
+                'rgb(216, 27, 96)',
+                'rgb(194, 24, 91)',
+                'rgb(173, 20, 87)',
+                'rgb(136, 14, 79)',
+                'rgb(255, 174, 185)',
+                'rgb(255, 127, 150)',
+                'rgb(255, 101, 123)',
+                'rgb(255, 153, 204)',
+                'rgb(255, 94, 160)',
+                'rgb(244, 143, 177)',
+                'rgb(251, 140, 174)',
+                'rgb(255, 122, 146)',
+                'rgb(255, 77, 109)',
+                'rgb(252, 100, 154)',
+                'rgb(255, 170, 204)',
+                'rgb(250, 128, 114)',
+                'rgb(255, 62, 150)'
+
+            ],
+            tension: 0.1
+        }]
+    }
+
+
+    for (var i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        labels_fem.push(registro.nomeVariacao);
+        data_grafico_fem.datasets[0].data.push(registro.percentual)
+
+    }
+
+    var config_grafico_fem = {
+        type: 'pie',
+        data: data_grafico_fem
+    }
+
+    var canvasGraficoPizzafem = document.getElementById('grafico-pizza-baixo')
+
+    new Chart(canvasGraficoPizzafem, config_grafico_fem)
+}
+
+function kpiTempoDeConclusao(idUsuario) {
+    fetch(`/kpi/tempoDeConclusao/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                var divKpiTempo = document.getElementById('kpiTempoDeConclusao')
+                divKpiTempo.innerHTML = resposta[0]['Tempo de conclusão']
+            })
+        } else {
+            console.log('Erro ao enviar dados para o banco de dados')
+        }
+    }).catch(function (erro) {
+        console.log(erro)
+    })
+}
+
+function kpiQtdVezesFem(idUsuario) {
+    fetch(`/kpi/qtdVezesFem/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+
+                var divKpiQtdFem = document.getElementById('kpiQtdVezesFem')
+                divKpiQtdFem.innerHTML = resposta[0]['count(*)']
+            })
+        } else {
+            console.log('Erro ao enviar dados para o banco de dados')
+        }
+    }).catch(function (erro) {
+        console.log(erro)
+    })
+}
+
+
+function kpiQtdVezesMasc(idUsuario) {
+    fetch(`/kpi/qtdVezesMasc/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+
+                var divKpiQtdMasc = document.getElementById('kpiQtdVezesMasc')
+                divKpiQtdMasc.innerHTML = resposta[0]['count(*)']
+            })
+        } else {
+            console.log('Erro ao enviar dados para o banco de dados')
+        }
+    }).catch(function (erro) {
+        console.log(erro)
+    })
 }

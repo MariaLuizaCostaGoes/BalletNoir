@@ -337,14 +337,16 @@ function mostrarALternativasMasc() {
 }
 
 function respostaFem(numResposta) {
+    var fkUsuario = sessionStorage.ID_USUARIO
     console.log('número da resposta: ', numResposta)
     const perguntaAtual = perguntasFemininas[IndexPergunta]
     const variacao = perguntaAtual.respostas[numResposta].variacao
+    var idVariacao = pegaridVariacao(variacao)
 
     pontuacaoFeminina[variacao]++
 
     IndexPergunta++
-
+    enviarDadosPersonalidade(idVariacao, fkUsuario)
     if (IndexPergunta < perguntasFemininas.length) {
         mostrarPerguntaFem()
         mostrarALternativasFem();
@@ -354,14 +356,16 @@ function respostaFem(numResposta) {
 }
 
 function respostaMasc(numResposta) {
+    var fkUsuario = sessionStorage.ID_USUARIO
     console.log('número da resposta: ', numResposta)
     const perguntaAtual = perguntasMasculinas[IndexPergunta]
     const variacao = perguntaAtual.respostas[numResposta].variacao
+    var idVariacao = pegaridVariacao(variacao)
 
     pontuacaoMasculina[variacao]++
 
     IndexPergunta++
-
+    enviarDadosPersonalidade(idVariacao, fkUsuario)
     if (IndexPergunta < perguntasMasculinas.length) {
         mostrarPerguntaMasc()
         mostrarALternativasMasc();
@@ -415,6 +419,7 @@ function finalizarQuizFem() {
     btnCima.style.display = 'none'
     btnBaixo.style.display = 'none'
     perguntaElement.innerHTML = `Sua variação é: ${variacaoUsuarioFem}`
+    perguntaElement.innerHTML += `<div class="BotãoFinalQuiz"><a href="estatisticas.html">Ver Estatísticas</a></div>`
     var startTime = sessionStorage.DATA_INICIO
     PegaridQuiz(startTime, dataHoraMomento(), idVariacao, idUsuario)
     pegarDescricaoVariacao(idUsuario)
@@ -438,6 +443,7 @@ function finalizarQuizMasc() {
     btnCima.style.display = 'none'
     btnBaixo.style.display = 'none'
     perguntaElement.innerHTML = `Sua variação é: ${variacaoUsuarioMasc}`
+    perguntaElement.innerHTML += `<div class="BotãoFinalQuiz"><a href="estatisticas.html">Ver Estatísticas</a></div>`
     var startTime = sessionStorage.DATA_INICIO
     PegaridQuiz(startTime, dataHoraMomento(), idVariacao, idUsuario)
 
@@ -521,6 +527,31 @@ function PegaridQuiz(dataInicioQuiz, endTime, fkVariacao, fkUsuario) {
 
 function enviarDadosQuiz(fkVariacao, fkUsuario) {
     fetch(`/usuarios/enviarDadosQuiz`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                fkUsuarioServer: fkUsuario,
+                fkVariacaoServer: fkVariacao
+            })
+        }
+    ).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(resposta)
+                console.log(JSON.stringify(resposta))
+
+            })
+        } else {
+            console.log('Erro ao enviar dados para o Banco de Dados!')
+        }
+    }).catch(function (erro) { console.log(erro) })
+}
+
+function enviarDadosPersonalidade(fkVariacao, fkUsuario) {
+    fetch(`/dashboard/enviarDadosPersonalidade`,
         {
             method: 'POST',
             headers: {
