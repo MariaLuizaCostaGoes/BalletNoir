@@ -22,7 +22,7 @@ function cadastrar(nome, email, senha) {
 
 //Quiz
 function pegarDescricao(idVariacao) {
-    var instrucaoSql = `select descricaoVariacao from resultado where idResultado = ${idVariacao};`
+    var instrucaoSql = `select descricaoVariacao from variacao where idVariacao = ${idVariacao};`
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }

@@ -419,10 +419,10 @@ function finalizarQuizFem() {
     btnCima.style.display = 'none'
     btnBaixo.style.display = 'none'
     perguntaElement.innerHTML = `Sua variação é: ${variacaoUsuarioFem}`
-    perguntaElement.innerHTML += `<div class="BotãoFinalQuiz"><a href="estatisticas.html">Ver Estatísticas</a></div>`
     var startTime = sessionStorage.DATA_INICIO
     PegaridQuiz(startTime, dataHoraMomento(), idVariacao, idUsuario)
-    pegarDescricaoVariacao(idUsuario)
+    pegarDescricaoVariacao(idVariacao)
+   
 }
 
 function finalizarQuizMasc() {
@@ -443,10 +443,9 @@ function finalizarQuizMasc() {
     btnCima.style.display = 'none'
     btnBaixo.style.display = 'none'
     perguntaElement.innerHTML = `Sua variação é: ${variacaoUsuarioMasc}`
-    perguntaElement.innerHTML += `<div class="BotãoFinalQuiz"><a href="estatisticas.html">Ver Estatísticas</a></div>`
     var startTime = sessionStorage.DATA_INICIO
     PegaridQuiz(startTime, dataHoraMomento(), idVariacao, idUsuario)
-
+    pegarDescricaoVariacao(idVariacao)
 }
 
 function pegarDescricaoVariacao(idVariacao) {
@@ -454,8 +453,10 @@ function pegarDescricaoVariacao(idVariacao) {
         if (response.ok) {
             response.json().then(function (resposta) {
                 var divDescricao = document.getElementById('descricao_txt')
+                var divBotao = document.getElementById('botaofinalquiz')
                 divDescricao.style.display = 'block'
                 divDescricao.innerHTML = JSON.stringify(resposta[0].descricaoVariacao)
+                divBotao.innerHTML = `<div class="BotaoFinalQuiz"><a href="estatisticas.html">Ver Estatísticas</a></div>`
             })
         } else {
             console.log('Erro ao enviar dados para o Banco de Dados!')

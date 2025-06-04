@@ -44,6 +44,9 @@ body {
     margin-top: 10px;
 }
 
+
+
+.BotaoFinalQuiz,
 .btn {
     background: #fdc6d9;
     color: #333;
@@ -56,6 +59,15 @@ body {
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.BotaoFinalQuiz {
+   margin-top: 5%;
+}
+
+.BotaoFinalQuiz a {
+    text-decoration: none;
+    color: #333;
 }
 
 .btn:hover:not([disabled]) {
@@ -102,4 +114,56 @@ body {
 
 #descricao {
     display: none;
+}
+
+default-footer {
+  padding: 20px;
+  background-color: #fce4ec;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+.name-default-footer {
+  color: #d81b60;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.name-default-footer:hover {
+  text-decoration: underline;
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 768px) {
+  .intro {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+
+  .decoration {
+    height: 140px;
+    width: 140px;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .hero-content h2 {
+    font-size: 2.2rem;
+  }
+
+  nav {
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    margin: 8px;
+  }
 }
